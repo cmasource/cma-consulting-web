@@ -17,7 +17,9 @@ export function DiagnosisCTASection() {
                 Empezá por ordenar el diagnóstico.
               </h2>
               <p className="mt-5 max-w-3xl text-base leading-8 text-white/85">
-                Antes de implementar software, automatizaciones o dashboards, necesitamos entender cómo funciona la empresa. El primer paso es detectar dónde se pierde tiempo, dinero e información.
+                Antes de implementar software, automatizaciones o dashboards,
+                necesitamos entender cómo funciona la empresa. El primer paso es
+                detectar dónde se pierde tiempo, dinero e información.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">

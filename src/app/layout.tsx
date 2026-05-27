@@ -15,13 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+  title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
   description:
     "Ayudamos a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y construir soluciones digitales a medida. Consultoría empresarial, software, automatización y datos.",
   openGraph: {
-    title:
-      "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+    title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
     description:
       "Ayudamos a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y construir soluciones digitales a medida.",
     type: "website",
@@ -30,8 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+    title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
     description:
       "Consultoría empresarial, software, automatización y datos para PyMEs, comercios, profesionales e industrias.",
   },

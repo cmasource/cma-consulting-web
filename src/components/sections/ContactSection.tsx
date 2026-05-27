@@ -15,7 +15,7 @@ const inquiryTypes = [
 ];
 
 const inputClass =
-  "mt-2 min-h-12 w-full rounded-md border border-[#0D1B3D]/10 bg-white px-4 text-sm text-[#101828] outline-none transition placeholder:text-[#98A2B3] focus:border-[#009A9A] focus:ring-4 focus:ring-[#009A9A]/10 dark:border-white/10 dark:bg-[#071225] dark:text-[#F8FAFC] dark:placeholder:text-[#94A3B8]";
+  "mt-2 min-h-12 w-full rounded-md border border-[#0D1B3D]/10 bg-white px-4 text-sm text-[#101828] outline-none transition placeholder:text-[#667085] focus:border-[#009A9A] focus:ring-4 focus:ring-[#009A9A]/10 dark:border-white/10 dark:bg-[#071225] dark:text-[#F8FAFC] dark:placeholder:text-[#CBD5E1]";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "error" | "success">("idle");

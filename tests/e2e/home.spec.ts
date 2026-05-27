@@ -8,19 +8,23 @@ test.describe("CMA Consulting landing", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Gestión, procesos y software para operar mejor.",
     );
-    await expect(
-      page.getByRole("banner").getByAltText("CMA Consulting").first(),
-    ).toBeVisible();
+
+    const headerLogos = page.getByRole("banner").getByAltText("CMA Consulting");
+    await expect(headerLogos).toHaveCount(1);
+    await expect(headerLogos.first()).toBeVisible();
+
     await expect(
       page.getByRole("link", { name: /Solicitar diagnóstico/i }).first(),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /Ver soluciones/i })).toBeVisible();
 
     for (const section of [
-      "Servicios de consultoría empresarial",
+      "El problema no es crecer. Es crecer sin sistema.",
+      "El sistema CMA",
+      "Dos capas. Una implementación.",
       "Software boutique para problemas concretos de negocio.",
       "Un ecosistema de herramientas para diagnosticar, operar y medir.",
-      "Portfolio, casos y laboratorios",
+      "Casos y laboratorios",
       "De la idea a la implementación",
       "Consultoría con visión de negocio y tecnología",
       "Hablemos de tu empresa",
@@ -28,6 +32,8 @@ test.describe("CMA Consulting landing", () => {
       await expect(page.getByRole("heading", { name: section })).toBeVisible();
     }
 
+    await expect(page.getByText("cma_source").first()).toBeVisible();
+    await expect(page.getByText("cmaQuantBot")).toBeVisible();
     await expect(page.locator("form")).toBeVisible();
   });
 
