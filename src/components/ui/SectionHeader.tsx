@@ -24,11 +24,11 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#007A7A] dark:text-[#5EEAD4]">
+        <p className="mb-3 font-mono text-[0.72rem] font-bold uppercase leading-5 tracking-[0.24em] text-[#007A7A] dark:text-[#5EEAD4]">
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-balance text-3xl font-black leading-tight tracking-normal text-[#0D1B3D] dark:text-[#F8FAFC] md:text-[2.8rem]">
+      <h2 className="text-balance text-3xl font-semibold leading-[1.04] tracking-[-0.015em] text-[#0D1B3D] dark:text-[#F8FAFC] md:text-[2.8rem]">
         {title}
       </h2>
       {description ? (

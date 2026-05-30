@@ -26,7 +26,7 @@ export function CTAButton({
     <a
       href={href}
       className={cn(
-        "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-sm font-semibold transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A]",
+        "inline-flex min-h-12 items-center justify-center rounded-[10px] px-5 text-sm font-semibold transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A]",
         variants[variant],
         className,
       )}

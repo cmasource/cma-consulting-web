@@ -78,22 +78,27 @@ test.describe("CMA Consulting landing", () => {
   });
 
   test("theme toggle switches between light and dark mode", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem("theme", "light");
+    });
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
-    if ((page.viewportSize()?.width ?? 0) < 1024) {
+    const isMobileNav = (page.viewportSize()?.width ?? 0) < 1024;
+
+    if (isMobileNav) {
       await page.getByRole("button", { name: /Abrir menú/i }).click();
     }
 
-    const toggle = page
-      .getByRole("button", { name: /Activar modo oscuro|Activar modo claro/i })
-      .last();
+    const toggle = isMobileNav
+      ? page
+          .locator("#mobile-menu")
+          .getByRole("button", { name: /Activar modo oscuro|Activar modo claro/i })
+      : page
+          .getByRole("banner")
+          .getByRole("button", { name: /Activar modo oscuro|Activar modo claro/i });
 
     await expect(toggle).toBeVisible();
-    if ((page.viewportSize()?.width ?? 0) < 1024) {
-      await toggle.click({ force: true });
-    } else {
-      await toggle.click();
-    }
+    await toggle.click();
     await expect(page.locator("html")).toHaveClass(/dark/);
     await expect(
       page.getByRole("button", { name: /Activar modo claro/i }).first(),

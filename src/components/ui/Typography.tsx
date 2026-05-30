@@ -10,7 +10,7 @@ export function Eyebrow({ children, className }: TextProps) {
   return (
     <p
       className={cn(
-        "font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#007A7A] dark:text-[#5EEAD4]",
+        "font-mono text-[0.72rem] font-bold uppercase leading-5 tracking-[0.24em] text-[#007A7A] dark:text-[#5EEAD4]",
         className,
       )}
     >
@@ -23,7 +23,7 @@ export function SectionTitle({ children, className }: TextProps) {
   return (
     <h2
       className={cn(
-        "text-balance text-3xl font-black leading-tight tracking-normal text-[#0D1B3D] dark:text-[#F8FAFC] md:text-5xl",
+        "text-balance text-3xl font-semibold leading-[1.04] tracking-[-0.015em] text-[#0D1B3D] dark:text-[#F8FAFC] md:text-5xl",
         className,
       )}
     >
@@ -49,7 +49,7 @@ export function CardTitle({ children, className }: TextProps) {
   return (
     <h3
       className={cn(
-        "text-xl font-black leading-tight text-[#0D1B3D] dark:text-[#F8FAFC]",
+        "text-xl font-semibold leading-tight tracking-[-0.01em] text-[#0D1B3D] dark:text-[#F8FAFC]",
         className,
       )}
     >
