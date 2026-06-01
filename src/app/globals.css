@@ -176,6 +176,92 @@ a {
   animation: manifesto-progress 10s linear infinite;
 }
 
+.cma-core-flow {
+  stroke-dasharray: 8 12;
+  stroke-dashoffset: 0;
+  opacity: 0.54;
+  animation: cma-core-flow 16s linear infinite;
+}
+
+.cma-core-node {
+  animation: cma-core-node 5.4s ease-in-out infinite;
+}
+
+.diagnostic-radar {
+  background:
+    radial-gradient(circle, rgba(127, 240, 230, 0.14) 0%, transparent 54%),
+    repeating-radial-gradient(circle, rgba(127, 240, 230, 0.16) 0 1px, transparent 1px 36px);
+  opacity: 0.9;
+}
+
+.diagnostic-sweep {
+  background: conic-gradient(from 0deg, rgba(127, 240, 230, 0.38), rgba(127, 240, 230, 0.08) 22deg, transparent 70deg);
+  animation: diagnostic-sweep 8s linear infinite;
+  mask-image: radial-gradient(circle, black 0%, black 68%, transparent 70%);
+}
+
+.diagnostic-node {
+  transform: translate(-50%, -50%);
+  animation: diagnostic-node 4.8s ease-in-out infinite;
+}
+
+.op-flow-line {
+  color: rgba(0, 154, 154, 0.55);
+  stroke-dasharray: 8 12;
+  animation: op-flow-line 16s linear infinite;
+}
+
+.dark .op-flow-line {
+  color: rgba(34, 199, 199, 0.62);
+}
+
+.op-flow-line-delay {
+  animation-delay: -7s;
+}
+
+.op-core-ring {
+  animation: op-core-ring 8s ease-in-out infinite;
+}
+
+.op-core-ring-delay {
+  animation-delay: -3s;
+}
+
+.op-core-pulse {
+  animation: op-core-pulse 5.8s ease-in-out infinite;
+}
+
+.op-orbit-label {
+  left: calc(50% - 44px);
+  top: calc(50% - 14px);
+}
+
+.op-flow-particle {
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  animation: op-flow-particle 7.5s ease-in-out infinite;
+}
+
+.op-flow-particle-1 {
+  animation-delay: -2.2s;
+}
+
+.op-flow-particle-2 {
+  animation-delay: -4.8s;
+}
+
+.op-result-bar {
+  transform-origin: left;
+  animation: op-result-bar 4.8s ease-in-out infinite;
+}
+
+.op-result-trend {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: op-result-trend 6.5s ease-in-out infinite;
+}
+
 @keyframes reveal {
   from {
     transform: translateY(16px);
@@ -282,6 +368,120 @@ a {
   }
 }
 
+@keyframes cma-core-flow {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes cma-core-node {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 154, 154, 0.22);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.025);
+    box-shadow: 0 0 0 10px rgba(0, 154, 154, 0);
+  }
+}
+
+@keyframes diagnostic-sweep {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes diagnostic-node {
+  0%,
+  100% {
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes op-flow-line {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes op-core-ring {
+  0%,
+  100% {
+    transform: scale(0.98);
+    opacity: 0.42;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.72;
+  }
+}
+
+@keyframes op-core-pulse {
+  0%,
+  100% {
+    box-shadow: 0 24px 80px rgba(0, 154, 154, 0.18);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 30px 110px rgba(0, 154, 154, 0.28);
+    transform: scale(1.025);
+  }
+}
+
+@keyframes op-flow-particle {
+  0% {
+    opacity: 0;
+    transform: translate(-210px, -10px) scale(0.75);
+  }
+  18% {
+    opacity: 0.9;
+  }
+  45% {
+    opacity: 0.95;
+    transform: translate(-18px, 0) scale(1);
+  }
+  58% {
+    opacity: 0.95;
+    transform: translate(18px, 0) scale(1);
+  }
+  84% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(214px, 14px) scale(0.75);
+  }
+}
+
+@keyframes op-result-bar {
+  0%,
+  100% {
+    transform: scaleX(0.72);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes op-result-trend {
+  0%,
+  24% {
+    stroke-dashoffset: 420;
+    opacity: 0.45;
+  }
+  62%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -300,5 +500,54 @@ a {
   .container-shell,
   .narrow-shell {
     width: min(100% - 32px, 100%);
+  }
+
+  .op-orbit-label {
+    transform: none !important;
+  }
+
+  .op-orbit-label:nth-of-type(1) {
+    transform: translate(-82px, -118px) !important;
+  }
+
+  .op-orbit-label:nth-of-type(2) {
+    transform: translate(52px, -88px) !important;
+  }
+
+  .op-orbit-label:nth-of-type(3) {
+    transform: translate(-94px, 92px) !important;
+  }
+
+  .op-orbit-label:nth-of-type(4) {
+    transform: translate(46px, 112px) !important;
+  }
+
+  .op-flow-particle {
+    animation-name: op-flow-particle-mobile;
+  }
+}
+
+@keyframes op-flow-particle-mobile {
+  0% {
+    opacity: 0;
+    transform: translate(-6px, -170px) scale(0.75);
+  }
+  20% {
+    opacity: 0.85;
+  }
+  48% {
+    opacity: 0.95;
+    transform: translate(0, -18px) scale(1);
+  }
+  60% {
+    opacity: 0.95;
+    transform: translate(0, 18px) scale(1);
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(6px, 172px) scale(0.75);
   }
 }

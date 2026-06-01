@@ -22,6 +22,7 @@ const topics = [
   "landing pages",
   "ecommerce",
   "automatización",
+  "diagnóstico",
 ];
 
 const steps = ["Nos escribís", "Entendemos tu necesidad", "Definimos próximos pasos"];

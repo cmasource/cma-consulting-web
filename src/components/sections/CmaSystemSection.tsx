@@ -62,8 +62,8 @@ export function CmaSystemSection() {
       <div className="container-shell">
         <div className="grid gap-10 lg:grid-cols-[0.36fr_0.64fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
-            <Eyebrow>Método operativo</Eyebrow>
-            <SectionTitle className="mt-4">El sistema CMA</SectionTitle>
+            <Eyebrow>El sistema CMA</Eyebrow>
+            <SectionTitle className="mt-4">Nuestro método operativo</SectionTitle>
             <SectionLead className="mt-5">
               Un método para pasar del diagnóstico a la implementación real:
               entender, ordenar, diseñar, ejecutar y medir con criterio
@@ -82,17 +82,18 @@ export function CmaSystemSection() {
 
           <div className="relative overflow-hidden rounded-[2rem] border border-[#0D1B3D]/10 bg-white p-4 shadow-2xl shadow-[#0D1B3D]/10 dark:border-white/10 dark:bg-[#071225] dark:shadow-black/30 md:p-6">
             <div className="premium-grid absolute inset-0 opacity-50" />
-            <div className="relative grid gap-6 xl:grid-cols-[0.48fr_0.52fr]">
-              <div className="grid gap-3">
+            <div className="relative grid gap-6 xl:grid-cols-[0.52fr_0.48fr]">
+              <div className="relative grid gap-3">
+                <div className="absolute left-[1.35rem] top-7 hidden h-[calc(100%-3.5rem)] w-px bg-gradient-to-b from-[#009A9A]/45 via-[#009A9A]/20 to-transparent dark:from-[#22C7C7]/55 dark:via-[#22C7C7]/20 md:block" />
                 {steps.map((step, index) => {
                   const Icon = step.icon;
                   return (
                     <article
                       key={step.title}
-                      className="group relative overflow-hidden rounded-[1.4rem] border border-[#0D1B3D]/10 bg-[#F8FAFC]/90 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-[#009A9A]/35 hover:bg-white dark:border-white/10 dark:bg-[#0F1B36]/90 dark:hover:border-[#22C7C7]/40"
+                      className="group relative overflow-hidden rounded-[1.4rem] border border-[#0D1B3D]/10 bg-[#F8FAFC]/90 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-[#009A9A]/35 hover:bg-white dark:border-white/10 dark:bg-[#0F1B36]/90 dark:hover:border-[#22C7C7]/40 md:ml-5"
                     >
                       <div className="flex items-start gap-4">
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0D1B3D] text-white shadow-lg shadow-[#0D1B3D]/15 dark:bg-[#15234A]">
+                        <span className="z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0D1B3D] text-white shadow-lg shadow-[#0D1B3D]/15 dark:bg-[#15234A]">
                           <Icon aria-hidden="true" className="h-5 w-5" />
                         </span>
                         <div>

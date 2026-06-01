@@ -81,7 +81,13 @@ export function Header() {
         )}
       >
         <nav className="overflow-hidden" aria-label="Menú mobile">
-          <div className="container-shell grid gap-1 py-4">
+          <div className="container-shell grid max-h-[calc(100svh-72px)] gap-1 overflow-y-auto py-4">
+            <div className="mb-1 flex items-center justify-between rounded-md border border-[#0D1B3D]/10 px-3 py-2 dark:border-white/10">
+              <span className="text-sm font-semibold text-[#344054] dark:text-[#CBD5E1]">
+                Apariencia
+              </span>
+              <ThemeToggle />
+            </div>
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -92,7 +98,6 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <ThemeToggle className="mt-2" />
             <a
               href="#contacto"
               className="mt-2 rounded-md bg-[#0D1B3D] px-3 py-3 text-center text-sm font-semibold !text-white"

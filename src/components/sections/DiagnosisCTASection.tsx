@@ -1,11 +1,15 @@
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
+import { DiagnosticScanner } from "@/components/visuals/DiagnosticScanner";
 import { siteConfig } from "@/content/site";
 
 const checklist = [
-  "Procesos y tareas críticas",
-  "Costos, ventas e indicadores",
-  "Herramientas actuales y oportunidades digitales",
+  "Procesos",
+  "Costos",
+  "Ventas",
+  "Datos",
+  "Tareas repetitivas",
+  "Indicadores",
 ];
 
 export function DiagnosisCTASection() {
@@ -49,6 +53,7 @@ export function DiagnosisCTASection() {
             </div>
 
             <div className="relative">
+              <DiagnosticScanner className="mb-4" />
               <div className="rounded-[1.6rem] border border-white/10 bg-white/10 p-5 backdrop-blur md:p-6">
                 <div className="flex items-center justify-between gap-4">
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0D1B3D]">
@@ -61,7 +66,7 @@ export function DiagnosisCTASection() {
                 <h3 className="mt-7 text-2xl font-semibold tracking-[-0.02em]">
                   Qué revisamos primero
                 </h3>
-                <div className="mt-6 grid gap-3">
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {checklist.map((item) => (
                     <div
                       key={item}

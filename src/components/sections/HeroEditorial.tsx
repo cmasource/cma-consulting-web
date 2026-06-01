@@ -1,6 +1,6 @@
 import { CTAButton } from "@/components/ui/CTAButton";
 import { Eyebrow } from "@/components/ui/Typography";
-import { CmaSystemFrame } from "@/components/visuals/CmaSystemFrame";
+import { CmaOperatingCore } from "@/components/visuals/CmaOperatingCore";
 import { siteConfig } from "@/content/site";
 
 export function HeroEditorial() {
@@ -51,7 +51,7 @@ export function HeroEditorial() {
 
           <div className="chapter-reveal relative lg:-mr-10 xl:-mr-14">
             <div className="absolute -inset-6 rounded-[2.4rem] border border-[#0D1B3D]/5 bg-white/20 blur-2xl dark:border-white/5 dark:bg-white/5" />
-            <CmaSystemFrame />
+            <CmaOperatingCore />
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { DiagnosisCTASection } from "@/components/sections/DiagnosisCTASection";
 import { HeroEditorial } from "@/components/sections/HeroEditorial";
 import { MethodologySection } from "@/components/sections/MethodologySection";
-import { ProblemManifesto } from "@/components/sections/ProblemManifesto";
+import { OperationalManifestoSection } from "@/components/sections/OperationalManifestoSection";
 import { ProductEcosystemSection } from "@/components/sections/ProductEcosystemSection";
 import { ServicesSystemSection } from "@/components/sections/ServicesSystemSection";
 import { SoftwareBoutiqueSection } from "@/components/sections/SoftwareBoutiqueSection";
@@ -20,7 +20,7 @@ export default function Home() {
       <Header />
       <main>
         <HeroEditorial />
-        <ProblemManifesto />
+        <OperationalManifestoSection />
         <CmaSystemSection />
         <TwoLayersSection />
         <SoftwareBoutiqueSection />
