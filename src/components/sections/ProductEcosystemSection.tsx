@@ -17,13 +17,13 @@ export function ProductEcosystemSection() {
           <div>
             <Eyebrow>Ecosistema</Eyebrow>
             <SectionTitle className="mt-4">
-              Un ecosistema de herramientas para diagnosticar, operar y medir.
+              Herramientas y productos en desarrollo
             </SectionTitle>
           </div>
           <SectionLead>
-            Módulos propios en desarrollo, planificación o laboratorio. No se
-            presentan como productos terminados: cada pieza marca una dirección
-            del sistema CMA.
+            Una visión de módulos propios en desarrollo, planificación o
+            laboratorio. La prioridad es mostrar capacidades reales sin prometer
+            productos terminados donde todavía hay exploración.
           </SectionLead>
         </div>
 

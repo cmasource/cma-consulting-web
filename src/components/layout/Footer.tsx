@@ -65,28 +65,35 @@ export function Footer() {
             </a>
             <a
               href={siteConfig.contact.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7FF0E6]"
             >
               LinkedIn
             </a>
             <a
               href={siteConfig.contact.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7FF0E6]"
             >
               Instagram
             </a>
           </div>
-          <p className="mt-6 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm leading-7 text-white/82">
-            cma_source queda como capacidad tecnológica para desarrollar
-            soluciones digitales cuando el diagnóstico lo requiere.
-          </p>
         </div>
       </div>
 
       <div className="relative border-t border-white/10 py-5">
-        <div className="container-shell flex flex-col gap-2 text-sm text-white/75 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-shell flex flex-col gap-5 text-sm text-white/75 lg:flex-row lg:items-center lg:justify-between">
           <span>© {year} CMA Consulting. Todos los derechos reservados.</span>
-          <span>Gestión, procesos y soluciones digitales.</span>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <span>Página desarrollada por</span>
+            <BrandLogo
+              variant="source"
+              context="dark"
+              className="[&>span]:h-7 sm:[&>span]:h-8"
+            />
+          </div>
         </div>
       </div>
     </footer>

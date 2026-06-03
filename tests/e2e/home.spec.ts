@@ -19,23 +19,21 @@ test.describe("CMA Consulting landing", () => {
     await expect(page.getByRole("link", { name: /Ver soluciones/i })).toBeVisible();
 
     for (const section of [
+      "Empezá con un diagnóstico claro.",
       "Del desorden operativo al sistema de gestión.",
-      "Nuestro método operativo",
-      "Criterio empresarial. Implementación digital.",
-      "Software boutique para problemas concretos de negocio.",
-      "Un ecosistema de herramientas para diagnosticar, operar y medir.",
-      "Casos y laboratorios",
-      "De la idea a la implementación",
+      "Qué podemos ordenar y mejorar",
+      "Implementación digital a medida",
+      "Herramientas y productos en desarrollo",
+      "Aplicaciones reales",
       "Consultoría con visión de negocio y tecnología",
       "Hablemos de tu empresa",
     ]) {
       await expect(page.getByRole("heading", { name: section })).toBeVisible();
     }
 
-    await expect(page.getByText("Operación dispersa")).toBeVisible();
-    await expect(page.getByText("Diagnóstico CMA")).toBeVisible();
-    await expect(page.getByText("Empresa con sistema")).toBeVisible();
-    await expect(page.getByText("cma_source").first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Gestión dispersa" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Diagnóstico CMA" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Empresa ordenada" })).toBeVisible();
     await expect(page.getByText("cmaQuantBot")).toBeVisible();
     const bodyText = await page.locator("body").innerText();
     expect(bodyText).not.toContain("CMA_SOURCE");
@@ -58,7 +56,7 @@ test.describe("CMA Consulting landing", () => {
     await expect(page.getByRole("button", { name: /Abrir menú/i })).toBeVisible();
   });
 
-  test("contact form shows simulated success state", async ({ page }) => {
+  test("contact form redirects the inquiry through a real channel", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const form = page.locator("form");
@@ -72,7 +70,9 @@ test.describe("CMA Consulting landing", () => {
     await expect(form.getByLabel("Email")).toHaveValue("demo@empresa.com");
     await form.getByRole("button", { name: /Enviar consulta/i }).click();
 
-    await expect(page.getByText(/Consulta registrada en modo demo/i)).toBeVisible();
+    await expect(
+      page.getByText(/Te vamos a redirigir para enviar la consulta/i),
+    ).toBeVisible();
   });
 
   test("primary diagnosis CTAs are visible", async ({ page }) => {

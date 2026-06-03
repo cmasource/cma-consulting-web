@@ -34,12 +34,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/brand/cma-app-icon-source.png", type: "image/png" },
-      { url: "/brand/cma-monogram.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/brand/cma-app-icon.png", type: "image/png" },
       { url: "/favicon.ico" },
     ],
-    shortcut: "/brand/cma-app-icon-source.png",
-    apple: [{ url: "/brand/cma-app-icon-source.png", type: "image/png" }],
+    shortcut: "/icon.png",
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
 };
 

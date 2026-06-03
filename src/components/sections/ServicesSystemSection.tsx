@@ -10,33 +10,33 @@ const serviceDetails = [
   {
     label: "Gestión y control",
     icon: BarChart3,
-    summary:
-      "Base para ordenar números, prioridades y seguimiento de la gestión.",
-    result: "Indicadores útiles, costos más claros y plan de mejora priorizado.",
+    problem: "La empresa vende, pero no sabe exactamente dónde gana o pierde.",
+    work: "Costos, indicadores, flujo, control y criterios de seguimiento.",
+    result: "Decisiones con información más clara y prioridades mejor ordenadas.",
     capabilities: consultingServiceGroups[0].items,
   },
   {
     label: "Procesos y mejora continua",
     icon: GitBranch,
-    summary:
-      "Diseño operativo para reducir desperdicio, ordenar tareas y estandarizar formas de trabajo.",
-    result: "Procesos visibles, responsables definidos y mejora continua aplicable.",
+    problem: "El trabajo depende de urgencias, memoria informal y tareas repetidas.",
+    work: "Lean, 5S, Kaizen, BPM, estandarización, gestión visual y mejora continua.",
+    result: "Procesos visibles, responsables definidos y una forma de mejorar sin improvisar.",
     capabilities: consultingServiceGroups[1].items,
   },
   {
     label: "Comercial y administración",
     icon: BriefcaseBusiness,
-    summary:
-      "Organización de ventas, compras, stock, cobranzas, tareas y responsabilidades.",
-    result: "Seguimiento comercial y administrativo con menos dependencia informal.",
+    problem: "Ventas, compras, stock y cobranzas avanzan sin trazabilidad suficiente.",
+    work: "Seguimiento comercial, administración, tareas, roles y circuitos básicos.",
+    result: "Operación diaria más ordenada y menos dependencia de acuerdos de palabra.",
     capabilities: consultingServiceGroups[2].items,
   },
   {
     label: "Transformación digital",
     icon: Settings2,
-    summary:
-      "Preparación y acompañamiento para implementar herramientas digitales con sentido operativo.",
-    result: "Tecnología mejor adoptada y alineada a procesos reales.",
+    problem: "Hay herramientas, planillas o sistemas, pero no forman un flujo de trabajo claro.",
+    work: "Diagnóstico digital, automatización, adopción y preparación para sistemas de gestión.",
+    result: "Tecnología aplicada a procesos reales, con mejor adopción y medición.",
     capabilities: consultingServiceGroups[3].items,
   },
 ];
@@ -53,11 +53,11 @@ export function ServicesSystemSection() {
           <div className="lg:sticky lg:top-28">
             <Eyebrow>CMA Consulting</Eyebrow>
             <SectionTitle className="mt-4">
-              Servicios como sistema, no como piezas sueltas.
+              Qué podemos ordenar y mejorar
             </SectionTitle>
             <SectionLead className="mt-5">
-              Organizamos gestión, procesos, administración y transformación
-              digital para preparar mejoras implementables.
+              Trabajamos sobre problemas concretos de gestión, procesos,
+              administración y tecnología para convertirlos en mejoras aplicables.
             </SectionLead>
           </div>
 
@@ -117,18 +117,29 @@ export function ServicesSystemSection() {
                         {selected.label}
                       </h3>
                       <p className="mt-4 max-w-2xl text-sm leading-7 text-[#475467] dark:text-[#CBD5E1] md:text-base">
-                        {selected.summary}
+                        {selected.problem}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-8 rounded-2xl border border-[#009A9A]/20 bg-white p-5 dark:border-[#22C7C7]/25 dark:bg-[#071225]">
-                    <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#007A7A] dark:text-[#5EEAD4]">
-                      Resultado esperado
-                    </p>
-                    <p className="mt-3 text-base font-semibold leading-7 text-[#0D1B3D] dark:text-[#F8FAFC]">
-                      {selected.result}
-                    </p>
+                  <div className="mt-8 grid gap-4 md:grid-cols-3">
+                    {[
+                      ["Problema típico", selected.problem],
+                      ["Qué se trabaja", selected.work],
+                      ["Resultado esperado", selected.result],
+                    ].map(([title, text]) => (
+                      <div
+                        key={title}
+                        className="rounded-2xl border border-[#009A9A]/20 bg-white p-5 dark:border-[#22C7C7]/25 dark:bg-[#071225]"
+                      >
+                        <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#007A7A] dark:text-[#5EEAD4]">
+                          {title}
+                        </p>
+                        <p className="mt-3 text-sm font-semibold leading-7 text-[#0D1B3D] dark:text-[#F8FAFC]">
+                          {text}
+                        </p>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-8">
@@ -136,7 +147,7 @@ export function ServicesSystemSection() {
                       Capacidades principales
                     </p>
                     <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                      {selected.capabilities.map((item) => (
+                      {selected.capabilities.slice(0, 8).map((item) => (
                         <div
                           key={item}
                           className="rounded-xl border border-[#0D1B3D]/10 bg-white px-4 py-3 text-sm font-semibold text-[#475467] dark:border-white/10 dark:bg-[#071225] dark:text-[#CBD5E1]"

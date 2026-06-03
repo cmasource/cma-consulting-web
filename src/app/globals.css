@@ -99,6 +99,7 @@ a {
 }
 
 .premium-grid {
+  pointer-events: none;
   background-image:
     linear-gradient(rgba(13, 27, 61, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(13, 27, 61, 0.05) 1px, transparent 1px);
@@ -122,6 +123,37 @@ a {
 
 .float-slow {
   animation: float-slow 8s ease-in-out infinite;
+}
+
+.hero-scan {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0, 154, 154, 0.16), transparent 19rem),
+    linear-gradient(115deg, transparent 0%, rgba(0, 154, 154, 0.12) 44%, transparent 62%);
+  animation: hero-scan 13s ease-in-out infinite alternate;
+}
+
+.dark .hero-scan {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(34, 199, 199, 0.15), transparent 20rem),
+    linear-gradient(115deg, transparent 0%, rgba(34, 199, 199, 0.13) 44%, transparent 62%);
+}
+
+.hero-circuit-line {
+  stroke-dasharray: 7 12;
+  animation: hero-circuit-line 18s linear infinite;
+}
+
+.hero-circuit-delay {
+  animation-delay: -8s;
+}
+
+.hero-node {
+  animation: hero-node 6.8s ease-in-out infinite;
+}
+
+.hero-particle {
+  opacity: 0;
+  animation: hero-particle 7.5s ease-in-out infinite;
 }
 
 .chapter-reveal {
@@ -151,10 +183,15 @@ a {
 }
 
 .ambient-scan {
+  pointer-events: none;
   background:
     linear-gradient(115deg, transparent 0%, rgba(0, 154, 154, 0.14) 40%, transparent 58%),
     radial-gradient(circle at 50% 50%, rgba(13, 27, 61, 0.12), transparent 18rem);
   animation: ambient-scan 14s ease-in-out infinite alternate;
+}
+
+.scroll-ambient {
+  will-change: transform, opacity;
 }
 
 .dark .ambient-scan {
@@ -262,6 +299,34 @@ a {
   animation: op-result-trend 6.5s ease-in-out infinite;
 }
 
+.command-line {
+  stroke-dasharray: 10 14;
+  animation: command-line 18s linear infinite;
+}
+
+.command-node {
+  animation: command-node 6s ease-in-out infinite;
+}
+
+.command-meter {
+  transform-origin: left;
+  animation: command-meter 5.5s ease-in-out infinite;
+}
+
+.simple-flow-line {
+  stroke-dasharray: 8 12;
+  animation: command-line 18s linear infinite;
+}
+
+.simple-flow-dot {
+  animation: simple-flow-dot 5.5s ease-in-out infinite;
+}
+
+.result-meter {
+  transform-origin: left;
+  animation: command-meter 5.5s ease-in-out infinite;
+}
+
 @keyframes reveal {
   from {
     transform: translateY(16px);
@@ -297,6 +362,58 @@ a {
   }
 }
 
+@keyframes hero-scan {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    opacity: 0.58;
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.05);
+    opacity: 0.88;
+  }
+}
+
+@keyframes hero-circuit-line {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes hero-node {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes hero-particle {
+  0% {
+    opacity: 0;
+    transform: translate(-185px, -120px) scale(0.72);
+  }
+  18% {
+    opacity: 0.9;
+  }
+  48% {
+    opacity: 0.95;
+    transform: translate(-10px, 0) scale(1);
+  }
+  58% {
+    opacity: 0.95;
+    transform: translate(10px, 0) scale(1);
+  }
+  84% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(190px, 120px) scale(0.72);
+  }
+}
+
 @keyframes chapter-reveal {
   from {
     opacity: 0;
@@ -316,6 +433,29 @@ a {
   to {
     transform: translate3d(4%, 3%, 0) scale(1.06);
     opacity: 0.9;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-ambient {
+    animation: ambient-scroll linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100%;
+  }
+}
+
+@keyframes ambient-scroll {
+  0% {
+    transform: translate3d(-7%, -3%, 0) scale(1);
+    opacity: 0.5;
+  }
+  45% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+    opacity: 0.82;
+  }
+  100% {
+    transform: translate3d(7%, 5%, 0) scale(1.12);
+    opacity: 0.62;
   }
 }
 
@@ -479,6 +619,51 @@ a {
   100% {
     stroke-dashoffset: 0;
     opacity: 1;
+  }
+}
+
+@keyframes command-line {
+  to {
+    stroke-dashoffset: -220;
+  }
+}
+
+@keyframes command-node {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 154, 154, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(0, 154, 154, 0);
+  }
+}
+
+@keyframes command-meter {
+  0%,
+  100% {
+    transform: scaleX(0.72);
+    opacity: 0.74;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes simple-flow-dot {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(700px);
+    opacity: 0;
   }
 }
 

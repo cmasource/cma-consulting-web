@@ -1,27 +1,41 @@
+const publicEnv = (value: string | undefined, fallback: string) =>
+  value?.trim() || fallback;
+
 export const siteConfig = {
   name: "CMA Consulting",
   sourceName: "cma_source",
   tagline: "Consultoría empresarial, procesos y tecnología aplicada.",
   headline: "Gestión, procesos y software para operar mejor.",
   subtitle:
-    "Ordenamos empresas, diseñamos procesos y construimos soluciones digitales medibles para PyMEs, comercios, profesionales e industrias.",
+    "CMA Consulting ayuda a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y aplicar tecnología con criterio operativo.",
   strategicLine:
-    "Ordenamos empresas. Diseñamos procesos. Construimos soluciones digitales.",
+    "Consultoría empresarial para ordenar, implementar y medir.",
+  diagnosisUrl: publicEnv(process.env.NEXT_PUBLIC_DIAGNOSTICO_360_URL, "#contacto"),
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contacto@cmaconsulting.com",
-    whatsappUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "#contacto",
-    linkedinUrl: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "#",
-    instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "#",
+    email: publicEnv(
+      process.env.NEXT_PUBLIC_CONTACT_EMAIL,
+      "carlosmatiasalvarez.cma@gmail.com",
+    ),
+    whatsappUrl: publicEnv(process.env.NEXT_PUBLIC_WHATSAPP_URL, "#contacto"),
+    linkedinUrl:
+      publicEnv(
+        process.env.NEXT_PUBLIC_LINKEDIN_URL,
+        "https://www.linkedin.com/in/cmatiasalvarez/",
+      ),
+    instagramUrl:
+      publicEnv(
+        process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+        "https://www.instagram.com/cmaconsultingsa/",
+      ),
   },
 };
 
 export const navItems = [
   { label: "Inicio", href: "#inicio" },
+  { label: "Diagnóstico 360", href: "#diagnostico-360" },
   { label: "Servicios", href: "#servicios" },
   { label: "Soluciones", href: "#soluciones" },
-  { label: "Productos", href: "#productos" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Metodología", href: "#metodologia" },
+  { label: "Aplicaciones", href: "#portfolio" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Contacto", href: "#contacto" },
 ];

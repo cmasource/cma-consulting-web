@@ -5,6 +5,7 @@ import {
   Bot,
   ChartNoAxesCombined,
   Code2,
+  Link2,
   PanelsTopLeft,
   ShoppingCart,
 } from "lucide-react";
@@ -18,30 +19,35 @@ const solutionDetails = [
       "Sitios claros, administrables y orientados a conversión para presentar la empresa y capturar consultas.",
     deliverables: ["Arquitectura web", "Landing o sitio institucional", "Formularios y medición"],
     flow: ["Mensaje", "Presencia", "Consulta"],
+    preview: ["Home", "Servicios", "Contacto"],
   },
   {
     summary:
       "Comercio online con catálogo, pedidos y operación básica preparada para escalar sin perder control.",
     deliverables: ["Catálogo", "Checkout", "Gestión de pedidos"],
     flow: ["Producto", "Pedido", "Cobro"],
+    preview: ["Catálogo", "Carrito", "Pedidos"],
   },
   {
     summary:
       "Herramientas internas para ordenar turnos, pedidos, costos, clientes o tareas que hoy viven en planillas.",
     deliverables: ["Panel interno", "Roles", "Flujos operativos"],
     flow: ["Proceso", "Sistema", "Uso diario"],
+    preview: ["Roles", "Tareas", "Panel"],
   },
   {
     summary:
       "Indicadores visibles para seguir ventas, costos, operación y resultados con menos dependencia manual.",
     deliverables: ["Tableros", "Reportes", "Exportaciones"],
     flow: ["Dato", "Indicador", "Decisión"],
+    preview: ["Ventas", "Costos", "KPI"],
   },
   {
     summary:
       "Automatizaciones e IA aplicada solo cuando reducen trabajo repetitivo o mejoran la calidad del proceso.",
     deliverables: ["Integraciones", "Alertas", "Asistentes internos"],
     flow: ["Evento", "Automatización", "Acción"],
+    preview: ["Entrada", "Regla", "Salida"],
   },
 ];
 
@@ -73,13 +79,11 @@ export function SoftwareBoutiqueSection() {
           <div className="lg:sticky lg:top-28">
             <Eyebrow>Implementación digital</Eyebrow>
             <SectionTitle className="mt-4">
-              Software boutique para problemas concretos de negocio.
+              Implementación digital a medida
             </SectionTitle>
             <SectionLead className="mt-5">
-              Diseñamos herramientas digitales a medida, priorizando claridad,
-              utilidad y adopción real. No desarrollamos tecnología aislada:
-              construimos soluciones alineadas a procesos, datos y objetivos
-              empresariales.
+              Desarrollamos herramientas digitales cuando el problema requiere
+              tecnología concreta para operar mejor.
             </SectionLead>
             <p className="mt-6 rounded-2xl border border-[#009A9A]/20 bg-white p-5 text-sm font-semibold leading-7 text-[#0D1B3D] dark:border-[#22C7C7]/25 dark:bg-[#0F1B36] dark:text-[#F8FAFC]">
               Incorporamos inteligencia artificial cuando aporta valor concreto al
@@ -140,13 +144,13 @@ export function SoftwareBoutiqueSection() {
               <div
                 id="software-tour-panel"
                 role="tabpanel"
-                className="relative min-h-[520px] overflow-hidden bg-[#0D1B3D] p-6 text-white md:p-8"
+                className="relative min-h-[560px] overflow-hidden bg-[#0D1B3D] p-6 text-white md:p-8"
               >
                 <div className="premium-grid absolute inset-0 opacity-15" />
                 <div className="ambient-scan absolute inset-[-18%] blur-2xl" />
                 <div className="relative">
                   <Badge className="border-white/15 bg-white/10 text-white">
-                    Product tour
+                    Tour de solución
                   </Badge>
                   <div className="mt-8 flex items-start gap-4">
                     <span className="node-pulse flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#22C7C7]/25 bg-white/10 text-[#7FF0E6]">
@@ -162,7 +166,23 @@ export function SoftwareBoutiqueSection() {
                     </div>
                   </div>
 
-                  <div className="mt-9 grid gap-4 md:grid-cols-[0.9fr_1.1fr]">
+                  <div className="mt-8 rounded-[1.35rem] border border-white/10 bg-white/10 p-4 backdrop-blur">
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {detail.preview.map((item, index) => (
+                        <div key={item} className="rounded-xl border border-white/10 bg-[#0D1B3D]/35 p-3">
+                          <div className="mb-3 flex items-center justify-between">
+                            <span className="font-mono text-[0.62rem] font-bold uppercase tracking-[0.16em] text-[#7FF0E6]">
+                              0{index + 1}
+                            </span>
+                            <Link2 aria-hidden="true" className="h-3.5 w-3.5 text-[#7FF0E6]" />
+                          </div>
+                          <p className="text-sm font-semibold text-white">{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-5 grid gap-4 md:grid-cols-[0.9fr_1.1fr]">
                     <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
                       <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#7FF0E6]">
                         Entregables

@@ -11,7 +11,7 @@ export function OperationalManifestoSection() {
       <div className="container-shell">
         <div className="grid gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
           <div>
-            <Eyebrow>Manifiesto operativo</Eyebrow>
+            <Eyebrow>Transformación operativa</Eyebrow>
             <SectionTitle className="mt-4">
               Del desorden operativo al sistema de gestión.
             </SectionTitle>
@@ -21,8 +21,9 @@ export function OperationalManifestoSection() {
               El problema no es crecer. Es crecer sin sistema.
             </p>
             <SectionLead className="mt-4 max-w-3xl">
-              Transformamos problemas dispersos en procesos, indicadores y
-              herramientas concretas para operar con más claridad.
+              Mostramos el cambio de forma simple: una gestión dispersa se
+              ordena con diagnóstico y se convierte en una empresa más clara
+              para operar.
             </SectionLead>
           </div>
         </div>

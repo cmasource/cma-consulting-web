@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowRight, CheckCircle2, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { Badge, Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
 import { siteConfig } from "@/content/site";
 
@@ -30,8 +30,31 @@ const steps = ["Nos escribís", "Entendemos tu necesidad", "Definimos próximos 
 const inputClass =
   "mt-2 min-h-12 w-full rounded-[10px] border border-[#0D1B3D]/10 bg-white px-4 text-sm text-[#101828] outline-none transition placeholder:text-[#667085] focus:border-[#009A9A] focus:ring-4 focus:ring-[#009A9A]/10 dark:border-white/10 dark:bg-[#071225] dark:text-[#F8FAFC] dark:placeholder:text-[#CBD5E1]";
 
+function GmailMark() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
+      <path fill="#EA4335" d="M3.5 6.8 12 13.2l8.5-6.4v10.7A1.5 1.5 0 0 1 19 19H5a1.5 1.5 0 0 1-1.5-1.5V6.8Z" />
+      <path fill="#FBBC04" d="M3.5 6.8 12 13.2v3.1L3.5 9.9V6.8Z" />
+      <path fill="#34A853" d="M20.5 6.8 12 13.2v3.1l8.5-6.4V6.8Z" />
+      <path fill="#4285F4" d="M5 5h14c.6 0 1.1.3 1.3.8L12 12 3.7 5.8C3.9 5.3 4.4 5 5 5Z" />
+    </svg>
+  );
+}
+
+function WhatsAppMark() {
+  return (
+    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366] text-white">
+      <MessageCircle aria-hidden="true" className="h-4 w-4" />
+    </span>
+  );
+}
+
 export function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "error" | "redirecting">("idle");
+  const hasContactWhatsApp =
+    siteConfig.contact.whatsappUrl !== "#contacto" &&
+    siteConfig.contact.whatsappUrl !== "#" &&
+    siteConfig.contact.whatsappUrl.startsWith("http");
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,7 +69,36 @@ export function ContactSection() {
       return;
     }
 
-    setStatus("success");
+    const getValue = (field: string) => String(formData.get(field) ?? "").trim();
+    const message = [
+      "Hola, quiero realizar una consulta desde la web de CMA Consulting.",
+      "",
+      `Nombre: ${getValue("name")}`,
+      `Empresa: ${getValue("company") || "-"}`,
+      `Rubro: ${getValue("industry") || "-"}`,
+      `Email: ${getValue("email")}`,
+      `Teléfono: ${getValue("phone") || "-"}`,
+      `Tipo de consulta: ${getValue("type") || "-"}`,
+      "",
+      "Mensaje:",
+      getValue("message"),
+    ].join("\n");
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = siteConfig.contact.whatsappUrl;
+    const hasConfiguredWhatsApp =
+      whatsappUrl &&
+      whatsappUrl !== "#contacto" &&
+      whatsappUrl !== "#" &&
+      whatsappUrl.startsWith("http");
+    const targetUrl = hasConfiguredWhatsApp
+      ? `${whatsappUrl}${whatsappUrl.includes("?") ? "&" : "?"}text=${encodedMessage}`
+      : `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(
+          "Consulta desde la web de CMA Consulting",
+        )}&body=${encodedMessage}`;
+
+    setStatus("redirecting");
+    window.open(targetUrl, "_blank", "noopener,noreferrer");
     event.currentTarget.reset();
   }
 
@@ -97,16 +149,18 @@ export function ContactSection() {
             <div className="mt-5 grid gap-3 text-sm text-[#475467] dark:text-[#CBD5E1] sm:grid-cols-2">
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-3 rounded-2xl border border-[#0D1B3D]/10 bg-white px-4 py-3 font-semibold text-[#0D1B3D] transition hover:border-[#009A9A]/35 hover:text-[#007A7A] dark:border-white/10 dark:bg-[#0F1B36] dark:text-[#F8FAFC] dark:hover:text-[#5EEAD4]"
+                className="flex items-center gap-3 rounded-2xl border border-[#EA4335]/20 bg-white px-4 py-3 font-semibold text-[#0D1B3D] shadow-sm transition hover:-translate-y-0.5 hover:border-[#EA4335]/45 hover:shadow-lg hover:shadow-[#EA4335]/10 dark:border-white/10 dark:bg-[#0F1B36] dark:text-[#F8FAFC]"
               >
-                <Mail aria-hidden="true" className="h-4 w-4" />
+                <GmailMark />
                 Email
               </a>
               <a
                 href={siteConfig.contact.whatsappUrl}
-                className="flex items-center gap-3 rounded-2xl border border-[#0D1B3D]/10 bg-white px-4 py-3 font-semibold text-[#0D1B3D] transition hover:border-[#009A9A]/35 hover:text-[#007A7A] dark:border-white/10 dark:bg-[#0F1B36] dark:text-[#F8FAFC] dark:hover:text-[#5EEAD4]"
+                target={hasContactWhatsApp ? "_blank" : undefined}
+                rel={hasContactWhatsApp ? "noopener noreferrer" : undefined}
+                className="flex items-center gap-3 rounded-2xl border border-[#25D366]/25 bg-[#25D366]/8 px-4 py-3 font-semibold text-[#0D1B3D] shadow-sm transition hover:-translate-y-0.5 hover:border-[#25D366]/55 hover:bg-[#25D366]/12 hover:shadow-lg hover:shadow-[#25D366]/10 dark:border-[#25D366]/35 dark:bg-[#25D366]/10 dark:text-[#F8FAFC]"
               >
-                <MessageCircle aria-hidden="true" className="h-4 w-4" />
+                <WhatsAppMark />
                 WhatsApp
               </a>
             </div>
@@ -218,10 +272,10 @@ export function ContactSection() {
                     Revisá nombre, email y mensaje para enviar la consulta.
                   </p>
                 ) : null}
-                {status === "success" ? (
+                {status === "redirecting" ? (
                   <p className="mt-4 flex items-center gap-2 rounded-[10px] bg-[#009A9A]/10 px-4 py-3 text-sm font-semibold text-[#005F5F] dark:text-[#5EEAD4]">
                     <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
-                    Consulta registrada en modo demo. Lista para conectar con backend.
+                    Te vamos a redirigir para enviar la consulta.
                   </p>
                 ) : null}
 
