@@ -72,9 +72,9 @@ export function ConsultingCommandPanel() {
                       0{index + 1}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-base font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
+                  <p className="mt-5 text-base font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
                     {module.title}
-                  </h3>
+                  </p>
                   <p className="mt-3 text-sm leading-6 text-[#475467] dark:text-[#CBD5E1]">
                     {module.text}
                   </p>

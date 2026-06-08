@@ -13,7 +13,7 @@ export function Header() {
     <header className="sticky inset-x-0 top-0 z-50 border-b border-[#0D1B3D]/10 bg-white/[0.92] backdrop-blur-xl dark:border-white/10 dark:bg-[#071225]/[0.92]">
       <div className="container-shell flex min-h-[72px] items-center justify-between gap-5">
         <a href="#inicio" aria-label="Ir al inicio" className="shrink-0">
-          <BrandLogo variant="consulting" context="auto" />
+          <BrandLogo variant="consulting" context="auto" priority />
         </a>
 
         <nav

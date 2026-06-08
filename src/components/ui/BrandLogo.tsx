@@ -8,6 +8,7 @@ type BrandLogoProps = {
   variant?: BrandLogoVariant;
   context?: BrandLogoContext;
   className?: string;
+  priority?: boolean;
 };
 
 const logoConfig = {
@@ -56,9 +57,9 @@ export function BrandLogo({
   variant = "consulting",
   context = "auto",
   className,
+  priority = false,
 }: BrandLogoProps) {
   const logo = logoConfig[variant];
-  const isPriority = variant === "consulting";
 
   return (
     <span
@@ -77,7 +78,7 @@ export function BrandLogo({
           alt={logo.alt}
           width={logo.width}
           height={logo.height}
-          priority={isPriority}
+          priority={priority}
           sizes={logo.sizes}
           className="h-full w-auto max-w-full object-contain"
         />
