@@ -3,7 +3,7 @@ import {
   SectionLead,
   SectionTitle,
 } from "@/components/ui/Typography";
-import { OperationalTransformationFlow } from "@/components/visuals/OperationalTransformationFlow";
+import { CmaTransformationMotion } from "@/components/visuals/CmaTransformationMotion";
 
 export function OperationalManifestoSection() {
   return (
@@ -17,19 +17,15 @@ export function OperationalManifestoSection() {
             </SectionTitle>
           </div>
           <div className="lg:pb-2">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.24em] text-[#007A7A] dark:text-[#5EEAD4]">
-              El problema no es crecer. Es crecer sin sistema.
-            </p>
-            <SectionLead className="mt-4 max-w-3xl">
-              Mostramos el cambio de forma simple: una gestión dispersa se
-              ordena con diagnóstico y se convierte en una empresa más clara
-              para operar.
+            <SectionLead className="max-w-3xl">
+              Transformamos problemas dispersos en procesos, indicadores y
+              herramientas concretas para operar con más claridad.
             </SectionLead>
           </div>
         </div>
 
         <div className="mt-11">
-          <OperationalTransformationFlow />
+          <CmaTransformationMotion />
         </div>
       </div>
     </section>

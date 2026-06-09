@@ -75,6 +75,7 @@ export function Header() {
 
       <div
         id="mobile-menu"
+        hidden={!open}
         className={cn(
           "grid border-t border-[#0D1B3D]/10 bg-white transition-all dark:border-white/10 dark:bg-[#071225] lg:hidden",
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",

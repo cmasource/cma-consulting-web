@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #06111f;
+      }
+
+      body {
+        font-family: sans-serif;
+        color: #eef8f8;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 34%, rgba(18, 214, 196, 0.13), transparent 32%),
+          radial-gradient(circle at 80% 78%, rgba(125, 239, 228, 0.08), transparent 28%),
+          radial-gradient(circle at 18% 64%, rgba(18, 214, 196, 0.08), transparent 28%),
+          #06111f;
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        background-image:
+          linear-gradient(rgba(43, 82, 104, 0.42) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(43, 82, 104, 0.42) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(circle at 50% 48%, black 0%, black 64%, transparent 92%);
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 48%, transparent 47%, rgba(0, 0, 0, 0.48) 100%);
+        pointer-events: none;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 176px 86px 176px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 54px;
+        opacity: 0;
+      }
+
+      .scene-inner {
+        position: relative;
+        width: 100%;
+        min-height: 1180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 56px;
+      }
+
+      .eyebrow {
+        font-family: monospace;
+        font-size: 26px;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #7defe4;
+        letter-spacing: 0;
+      }
+
+      .headline {
+        max-width: 860px;
+        font-size: 82px;
+        line-height: 0.98;
+        font-weight: 780;
+        color: #eef8f8;
+      }
+
+      .statement {
+        max-width: 820px;
+        font-size: 56px;
+        line-height: 1.08;
+        font-weight: 680;
+        color: #eef8f8;
+      }
+
+      .support {
+        max-width: 810px;
+        font-size: 34px;
+        line-height: 1.26;
+        font-weight: 400;
+        color: #c8d8dc;
+      }
+
+      .chip-field {
+        position: relative;
+        height: 650px;
+        width: 100%;
+      }
+
+      .chip {
+        position: absolute;
+        min-width: 360px;
+        min-height: 92px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        border-radius: 8px;
+        border: 1px solid rgba(125, 239, 228, 0.18);
+        background: linear-gradient(180deg, rgba(16, 45, 69, 0.82), rgba(6, 17, 31, 0.76));
+        color: #e6f2f3;
+        font-size: 30px;
+        line-height: 1.12;
+        font-weight: 430;
+        box-shadow: 0 18px 54px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(238, 248, 248, 0.05);
+      }
+
+      .chip::before,
+      .node::before,
+      .row::before {
+        content: "";
+        flex: 0 0 12px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #12d6c4;
+        box-shadow: 0 0 14px rgba(18, 214, 196, 0.52);
+      }
+
+      .chip-1 {
+        top: 28px;
+        left: 22px;
+      }
+
+      .chip-2 {
+        top: 184px;
+        right: 18px;
+      }
+
+      .chip-3 {
+        left: 76px;
+        bottom: 158px;
+      }
+
+      .chip-4 {
+        right: 52px;
+        bottom: 12px;
+      }
+
+      .core-wrap {
+        position: relative;
+        height: 720px;
+        display: grid;
+        place-items: center;
+      }
+
+      .core {
+        position: relative;
+        width: 490px;
+        height: 490px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(125, 239, 228, 0.9) 0 4%, rgba(18, 214, 196, 0.22) 22%, transparent 64%),
+          radial-gradient(circle, rgba(18, 214, 196, 0.13), transparent 69%);
+        border: 1px solid rgba(125, 239, 228, 0.38);
+        box-shadow:
+          0 0 68px rgba(18, 214, 196, 0.32),
+          0 0 150px rgba(18, 214, 196, 0.18),
+          inset 0 0 44px rgba(125, 239, 228, 0.22);
+      }
+
+      .core::before,
+      .core::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(125, 239, 228, 0.25);
+      }
+
+      .core::before {
+        inset: 42px;
+      }
+
+      .core::after {
+        inset: 102px;
+        border-color: rgba(238, 248, 248, 0.16);
+      }
+
+      .core-stack {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .core-word {
+        font-size: 46px;
+        line-height: 1;
+        font-weight: 620;
+        color: #f0fbfb;
+      }
+
+      .orbit-node {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #12d6c4;
+        box-shadow: 0 0 18px rgba(18, 214, 196, 0.62);
+      }
+
+      .orbit-a {
+        top: 116px;
+        left: 210px;
+      }
+
+      .orbit-b {
+        right: 170px;
+        top: 270px;
+      }
+
+      .orbit-c {
+        bottom: 120px;
+        left: 280px;
+      }
+
+      .system-panel {
+        position: relative;
+        min-height: 720px;
+        padding: 44px;
+        border-radius: 8px;
+        border: 1px solid rgba(125, 239, 228, 0.2);
+        background: linear-gradient(180deg, rgba(10, 30, 50, 0.88), rgba(6, 17, 31, 0.78));
+        box-shadow: 0 24px 76px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(238, 248, 248, 0.06);
+      }
+
+      .panel-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 38px;
+      }
+
+      .panel-label {
+        font-family: monospace;
+        font-size: 22px;
+        color: #a8bdc6;
+        text-transform: uppercase;
+      }
+
+      .panel-status {
+        width: 96px;
+        height: 30px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(18, 214, 196, 0.18), rgba(125, 239, 228, 0.36));
+        border: 1px solid rgba(125, 239, 228, 0.28);
+      }
+
+      .rows {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        min-height: 72px;
+        padding: 0 6px;
+        font-size: 30px;
+        color: #e6f2f3;
+      }
+
+      .chart {
+        position: absolute;
+        left: 44px;
+        right: 44px;
+        bottom: 44px;
+        height: 185px;
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 34px;
+        align-items: end;
+      }
+
+      .bars {
+        height: 150px;
+        display: flex;
+        gap: 16px;
+        align-items: end;
+      }
+
+      .bar {
+        width: 30px;
+        height: var(--h);
+        transform-origin: bottom;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(180deg, #7defe4, #12d6c4);
+        box-shadow: 0 0 14px rgba(18, 214, 196, 0.36);
+      }
+
+      .line-chart {
+        width: 100%;
+        height: 150px;
+        overflow: visible;
+      }
+
+      .line-chart path {
+        fill: none;
+        stroke: #7defe4;
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 8px rgba(18, 214, 196, 0.52));
+      }
+
+      .line-chart circle {
+        fill: #7defe4;
+        filter: drop-shadow(0 0 8px rgba(18, 214, 196, 0.52));
+      }
+
+      .brand-lockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 34px;
+      }
+
+      .brand {
+        font-size: 92px;
+        line-height: 0.96;
+        font-weight: 820;
+        color: #eef8f8;
+      }
+
+      .tagline {
+        max-width: 820px;
+        font-size: 42px;
+        line-height: 1.18;
+        font-weight: 420;
+        color: #d6e5e8;
+      }
+
+      .cta {
+        margin-top: 18px;
+        padding: 24px 34px;
+        border-radius: 8px;
+        color: #06111f;
+        background: linear-gradient(90deg, #7defe4, #12d6c4);
+        font-size: 32px;
+        line-height: 1;
+        font-weight: 720;
+        box-shadow: 0 20px 58px rgba(18, 214, 196, 0.22);
+      }
+
+      .url {
+        font-family: monospace;
+        font-size: 23px;
+        color: #b8cbd1;
+        opacity: 0.72;
+      }
+
+      .brand-core {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 1px solid rgba(125, 239, 228, 0.32);
+        background: radial-gradient(circle, rgba(125, 239, 228, 0.76) 0 5%, rgba(18, 214, 196, 0.18) 34%, transparent 70%);
+        box-shadow: 0 0 64px rgba(18, 214, 196, 0.34);
+      }
+
+      .wire {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(18, 214, 196, 0.68), transparent);
+        opacity: 0;
+        transform-origin: left center;
+      }
+
+      .wire-1 {
+        width: 340px;
+        left: 128px;
+        top: 454px;
+        transform: rotate(15deg);
+      }
+
+      .wire-2 {
+        width: 310px;
+        right: 120px;
+        top: 566px;
+        transform: rotate(-20deg);
+      }
+
+      .wire-3 {
+        width: 330px;
+        left: 178px;
+        bottom: 244px;
+        transform: rotate(-18deg);
+      }
+
+      .particle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #12d6c4;
+        opacity: 0;
+        box-shadow: 0 0 14px rgba(18, 214, 196, 0.62);
+      }
+
+      .wipe {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        background: linear-gradient(180deg, rgba(6, 17, 31, 0), rgba(18, 214, 196, 0.12), rgba(6, 17, 31, 0));
+        opacity: 0;
+      }
+
+      .corner {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border-color: rgba(125, 239, 228, 0.34);
+        opacity: 0.54;
+      }
+
+      .corner.tl {
+        top: 94px;
+        left: 62px;
+        border-top: 1px solid;
+        border-left: 1px solid;
+      }
+
+      .corner.tr {
+        top: 94px;
+        right: 62px;
+        border-top: 1px solid;
+        border-right: 1px solid;
+      }
+
+      .corner.bl {
+        bottom: 94px;
+        left: 62px;
+        border-bottom: 1px solid;
+        border-left: 1px solid;
+      }
+
+      .corner.br {
+        right: 62px;
+        bottom: 94px;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="10"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div class="grid" data-layout-ignore></div>
+      <div class="vignette" data-layout-ignore></div>
+      <div class="corner tl" data-layout-ignore></div>
+      <div class="corner tr" data-layout-ignore></div>
+      <div class="corner bl" data-layout-ignore></div>
+      <div class="corner br" data-layout-ignore></div>
+
+      <section class="scene scene-1">
+        <div class="scene-inner">
+          <div class="eyebrow">CMA Consulting</div>
+          <h1 class="headline">Muchas empresas operan así.</h1>
+          <div class="chip-field">
+            <div class="chip chip-1">costos poco claros</div>
+            <div class="chip chip-2">datos aislados</div>
+            <div class="chip chip-3">tareas manuales</div>
+            <div class="chip chip-4">ventas sin seguimiento</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene scene-2">
+        <div class="scene-inner">
+          <div class="eyebrow">Diagnóstico operativo</div>
+          <h2 class="statement">Detectar. Ordenar. Priorizar.</h2>
+          <div class="core-wrap">
+            <div class="wire wire-1" data-layout-ignore></div>
+            <div class="wire wire-2" data-layout-ignore></div>
+            <div class="wire wire-3" data-layout-ignore></div>
+            <div class="orbit-node orbit-a" data-layout-ignore></div>
+            <div class="orbit-node orbit-b" data-layout-ignore></div>
+            <div class="orbit-node orbit-c" data-layout-ignore></div>
+            <div class="core">
+              <div class="core-stack">
+                <span class="core-word">detectar</span>
+                <span class="core-word">ordenar</span>
+                <span class="core-word">priorizar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene scene-3">
+        <div class="scene-inner">
+          <div class="eyebrow">Sistema de gestión</div>
+          <h2 class="statement">Procesos, indicadores y herramientas conectadas.</h2>
+          <div class="system-panel">
+            <div class="panel-top">
+              <div class="panel-label">operación clara</div>
+              <div class="panel-status" data-layout-ignore></div>
+            </div>
+            <div class="rows">
+              <div class="row">procesos definidos</div>
+              <div class="row">indicadores visibles</div>
+              <div class="row">herramientas conectadas</div>
+            </div>
+            <div class="chart" data-layout-ignore>
+              <div class="bars">
+                <div class="bar" style="--h: 54px"></div>
+                <div class="bar" style="--h: 82px"></div>
+                <div class="bar" style="--h: 112px"></div>
+                <div class="bar" style="--h: 148px"></div>
+              </div>
+              <svg class="line-chart" viewBox="0 0 430 150" aria-hidden="true">
+                <path class="line-path" d="M10 130 C90 112, 128 98, 178 76 S292 34, 418 16" pathLength="1"></path>
+                <circle class="line-dot" cx="418" cy="16" r="10"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene scene-4">
+        <div class="scene-inner brand-lockup">
+          <div class="brand-core" data-layout-ignore></div>
+          <div class="brand">CMA Consulting</div>
+          <div class="tagline">Gestión, procesos y tecnología para operar mejor.</div>
+          <div class="cta">Solicitá tu diagnóstico</div>
+          <div class="url">cma-consulting.vercel.app</div>
+        </div>
+      </section>
+
+      <div class="particle p1" data-layout-ignore></div>
+      <div class="particle p2" data-layout-ignore></div>
+      <div class="particle p3" data-layout-ignore></div>
+      <div class="particle p4" data-layout-ignore></div>
+      <div class="particle p5" data-layout-ignore></div>
+      <div class="particle p6" data-layout-ignore></div>
+      <div class="wipe" data-layout-ignore></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+
+      const tl = gsap.timeline({ paused: true });
+
+      function sweep(at) {
+        tl.fromTo(".wipe", { opacity: 0, yPercent: -100 }, { opacity: 1, yPercent: 0, duration: 0.38, ease: "power2.inOut" }, at);
+        tl.to(".wipe", { opacity: 0, yPercent: 100, duration: 0.42, ease: "power2.inOut" }, at + 0.38);
+      }
+
+      tl.set(".scene-1", { opacity: 1 }, 0);
+      tl.set(".scene-2, .scene-3, .scene-4", { opacity: 0 }, 0);
+      tl.set(".bar", { scaleY: 0.22, opacity: 0.38 }, 0);
+      tl.set(".line-path", { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0.34 }, 0);
+      tl.set(".line-dot", { opacity: 0, scale: 0.75, transformOrigin: "center center" }, 0);
+
+      tl.from(".scene-1 .eyebrow", { opacity: 0, y: -18, duration: 0.55, ease: "power3.out" }, 0.2);
+      tl.from(".scene-1 .headline", { opacity: 0, y: 42, duration: 0.72, ease: "expo.out" }, 0.38);
+      tl.from(".chip", { opacity: 0, y: 34, scale: 0.94, duration: 0.52, stagger: 0.1, ease: "back.out(1.2)" }, 0.85);
+      tl.to(".chip", {
+        x: (i) => [-8, 7, -5, 6][i],
+        y: (i) => [5, -6, 4, -5][i],
+        rotation: (i) => [-0.4, 0.32, -0.24, 0.3][i],
+        duration: 1.25,
+        repeat: 2,
+        yoyo: true,
+        stagger: 0.06,
+        ease: "sine.inOut"
+      }, 1.78);
+
+      sweep(2.35);
+      tl.set(".scene-2", { opacity: 1 }, 2.74);
+      tl.set(".scene-1", { opacity: 0 }, 2.78);
+      tl.from(".scene-2 .eyebrow", { opacity: 0, y: -20, duration: 0.48, ease: "power2.out" }, 2.84);
+      tl.from(".scene-2 .statement", { opacity: 0, y: 36, duration: 0.62, ease: "expo.out" }, 2.98);
+      tl.from(".core", { opacity: 0, scale: 0.86, duration: 0.76, ease: "back.out(1.18)" }, 3.22);
+      tl.from(".core-word", { opacity: 0, y: 18, duration: 0.38, stagger: 0.11, ease: "power2.out" }, 3.48);
+      tl.from(".orbit-node", { opacity: 0, scale: 0.25, duration: 0.36, stagger: 0.12, ease: "back.out(1.5)" }, 3.64);
+      tl.to(".wire", { opacity: 0.58, scaleX: 1, duration: 0.62, stagger: 0.1, ease: "power2.out" }, 3.84);
+      tl.to(".core", {
+        scale: 1.026,
+        boxShadow: "0 0 82px rgba(18, 214, 196, 0.42), 0 0 162px rgba(18, 214, 196, 0.2), inset 0 0 48px rgba(125, 239, 228, 0.28)",
+        duration: 0.82,
+        repeat: 2,
+        yoyo: true,
+        ease: "sine.inOut"
+      }, 4.05);
+
+      const inbound = [
+        [142, 940, 468, 950],
+        [820, 1040, 604, 970],
+        [260, 1280, 492, 1060]
+      ];
+      inbound.forEach((p, i) => {
+        const selector = `.p${i + 1}`;
+        tl.set(selector, { x: p[0], y: p[1], opacity: 0, scale: 0.9 }, 3.34 + i * 0.12);
+        tl.to(selector, { opacity: 0.8, duration: 0.2, ease: "power1.out" }, 3.42 + i * 0.12);
+        tl.to(selector, { x: p[2], y: p[3], scale: 1.04, duration: 1.0, ease: "power2.inOut" }, 3.44 + i * 0.12);
+        tl.to(selector, { opacity: 0, scale: 0.58, duration: 0.28, ease: "power1.in" }, 4.2 + i * 0.12);
+      });
+
+      sweep(5.15);
+      tl.set(".scene-3", { opacity: 1 }, 5.54);
+      tl.set(".scene-2", { opacity: 0 }, 5.58);
+      tl.from(".scene-3 .eyebrow", { opacity: 0, x: -24, duration: 0.5, ease: "power3.out" }, 5.66);
+      tl.from(".scene-3 .statement", { opacity: 0, y: 36, duration: 0.62, ease: "expo.out" }, 5.82);
+      tl.from(".system-panel", { opacity: 0, y: 42, scale: 0.96, duration: 0.72, ease: "back.out(1.1)" }, 6.08);
+      tl.from(".row", { opacity: 0, x: -22, duration: 0.44, stagger: 0.12, ease: "power2.out" }, 6.46);
+      tl.to(".bar", { scaleY: 1, opacity: 1, duration: 0.58, stagger: 0.09, ease: "expo.out" }, 6.78);
+      tl.to(".line-path", { strokeDashoffset: 0, opacity: 1, duration: 0.78, ease: "power2.out" }, 7.02);
+      tl.to(".line-dot", { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(1.7)" }, 7.62);
+
+      const outbound = [
+        [488, 1010, 280, 1204],
+        [560, 996, 690, 1220],
+        [520, 1074, 540, 1360]
+      ];
+      outbound.forEach((p, i) => {
+        const selector = `.p${i + 4}`;
+        tl.set(selector, { x: p[0], y: p[1], opacity: 0, scale: 0.85 }, 5.98 + i * 0.13);
+        tl.to(selector, { opacity: 0.74, duration: 0.2, ease: "power1.out" }, 6.06 + i * 0.13);
+        tl.to(selector, { x: p[2], y: p[3], scale: 1.02, duration: 1.12, ease: "power2.inOut" }, 6.08 + i * 0.13);
+        tl.to(selector, { opacity: 0, scale: 0.55, duration: 0.28, ease: "power1.in" }, 6.98 + i * 0.13);
+      });
+
+      sweep(7.9);
+      tl.set(".scene-4", { opacity: 1 }, 8.28);
+      tl.set(".scene-3", { opacity: 0 }, 8.32);
+      tl.from(".brand-core", { opacity: 0, scale: 0.72, duration: 0.56, ease: "back.out(1.2)" }, 8.42);
+      tl.from(".brand", { opacity: 0, y: 34, duration: 0.58, ease: "expo.out" }, 8.58);
+      tl.from(".tagline", { opacity: 0, y: 24, duration: 0.52, ease: "power2.out" }, 8.78);
+      tl.from(".cta", { opacity: 0, y: 22, scale: 0.96, duration: 0.44, ease: "back.out(1.12)" }, 9.05);
+      tl.from(".url", { opacity: 0, y: 14, duration: 0.36, ease: "power1.out" }, 9.24);
+      tl.to(".brand-core", { scale: 1.04, duration: 0.76, repeat: 1, yoyo: true, ease: "sine.inOut" }, 9.18);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

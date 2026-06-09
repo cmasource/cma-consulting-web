@@ -17,7 +17,7 @@ const logoConfig = {
     alt: "CMA Consulting",
     width: 622,
     height: 144,
-    frame: "h-9 sm:h-11 lg:h-12",
+    frame: "h-9 w-[156px] sm:h-11 sm:w-[190px] lg:h-12 lg:w-[207px]",
     sizes: "(max-width: 640px) 156px, (max-width: 1024px) 190px, 207px",
   },
   source: {
@@ -25,7 +25,7 @@ const logoConfig = {
     alt: "cma_source",
     width: 643,
     height: 131,
-    frame: "h-9 sm:h-11 lg:h-12",
+    frame: "h-9 w-[176px] sm:h-11 sm:w-[216px] lg:h-12 lg:w-[236px]",
     sizes: "(max-width: 640px) 176px, (max-width: 1024px) 216px, 236px",
   },
   mark: {
@@ -33,7 +33,7 @@ const logoConfig = {
     alt: "CMA",
     width: 295,
     height: 130,
-    frame: "h-11 sm:h-12",
+    frame: "h-11 w-[100px] sm:h-12 sm:w-[109px]",
     sizes: "(max-width: 640px) 100px, 109px",
   },
   sourceStacked: {
@@ -41,7 +41,7 @@ const logoConfig = {
     alt: "cma_source",
     width: 287,
     height: 198,
-    frame: "h-20 sm:h-24",
+    frame: "h-20 w-[116px] sm:h-24 sm:w-[139px]",
     sizes: "(max-width: 640px) 116px, 139px",
   },
 } as const satisfies Record<BrandLogoVariant, {
@@ -80,7 +80,7 @@ export function BrandLogo({
           height={logo.height}
           priority={priority}
           sizes={logo.sizes}
-          className="h-full w-auto max-w-full object-contain"
+          className="h-full w-full object-contain"
         />
       </span>
     </span>

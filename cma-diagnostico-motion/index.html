@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #06111f;
+      }
+
+      body {
+        font-family: sans-serif;
+        color: #ddebEE;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 45%, rgba(18, 214, 196, 0.12), transparent 29%),
+          radial-gradient(circle at 15% 30%, rgba(125, 239, 228, 0.07), transparent 22%),
+          radial-gradient(circle at 85% 65%, rgba(18, 214, 196, 0.06), transparent 24%),
+          #06111f;
+      }
+
+      .frame {
+        position: absolute;
+        inset: 0;
+        padding: 82px 92px 84px;
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.24;
+        background-image:
+          linear-gradient(rgba(40, 75, 99, 0.45) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(40, 75, 99, 0.45) 1px, transparent 1px);
+        background-size: 80px 80px;
+        mask-image: radial-gradient(circle at 50% 50%, black 0%, black 58%, transparent 88%);
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, transparent 48%, rgba(0, 0, 0, 0.44) 100%);
+        pointer-events: none;
+      }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+
+      .eyebrow {
+        font-family: monospace;
+        font-size: 22px;
+        color: #7defe4;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .duration {
+        font-family: monospace;
+        font-size: 22px;
+        color: #8fa8b4;
+        font-variant-numeric: tabular-nums;
+        display: none;
+      }
+
+      .system {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 520px minmax(0, 1fr);
+        gap: 38px;
+        align-items: stretch;
+      }
+
+      .panel,
+      .core-panel {
+        min-height: 0;
+        height: 100%;
+        border: 1px solid rgba(125, 239, 228, 0.16);
+        background: linear-gradient(180deg, rgba(11, 32, 53, 0.82), rgba(6, 17, 31, 0.74));
+        border-radius: 8px;
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(221, 235, 238, 0.05);
+      }
+
+      .panel {
+        position: relative;
+        padding: 56px 50px 52px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+      }
+
+      .panel::after {
+        content: "";
+        position: absolute;
+        left: 50px;
+        right: 50px;
+        bottom: 48px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(125, 239, 228, 0.26), rgba(125, 239, 228, 0.06), transparent);
+        opacity: 0.7;
+      }
+
+      .right-panel::after {
+        opacity: 0.36;
+      }
+
+      .panel-title {
+        font-size: 58px;
+        line-height: 1.04;
+        font-weight: 760;
+        color: #eef8f8;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: 27px;
+      }
+
+      .left-panel .list {
+        margin-top: 8px;
+      }
+
+      .right-panel .list {
+        gap: 24px;
+      }
+
+      .item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        min-height: 72px;
+        padding: 0 4px;
+        color: #e6f2f3;
+        font-size: 32px;
+        line-height: 1.2;
+        font-weight: 400;
+      }
+
+      .item::before {
+        content: "";
+        flex: 0 0 13px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #12d6c4;
+        box-shadow: 0 0 14px rgba(18, 214, 196, 0.56);
+      }
+
+      .left-panel .item::before {
+        background: rgba(125, 239, 228, 0.46);
+        box-shadow: 0 0 12px rgba(18, 214, 196, 0.28);
+      }
+
+      .core-panel {
+        position: relative;
+        padding: 56px 50px 52px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 34px;
+      }
+
+      .core-title {
+        font-size: 57px;
+        line-height: 1.08;
+        font-weight: 760;
+        color: #eef8f8;
+        text-align: center;
+      }
+
+      .core {
+        position: relative;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(125, 239, 228, 0.9) 0 3%, rgba(18, 214, 196, 0.26) 20%, transparent 62%),
+          radial-gradient(circle, rgba(18, 214, 196, 0.14), transparent 68%);
+        border: 1px solid rgba(125, 239, 228, 0.38);
+        box-shadow:
+          0 0 50px rgba(18, 214, 196, 0.36),
+          0 0 104px rgba(18, 214, 196, 0.18),
+          inset 0 0 36px rgba(125, 239, 228, 0.25);
+      }
+
+      .core::before,
+      .core::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        inset: 24px;
+        border: 1px solid rgba(125, 239, 228, 0.28);
+      }
+
+      .core::after {
+        inset: 78px;
+        border-color: rgba(221, 235, 238, 0.18);
+      }
+
+      .core-stack {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        width: 76%;
+        text-align: center;
+      }
+
+      .core-word {
+        display: block;
+        font-family: sans-serif;
+        color: #f0fbfb;
+        font-size: 38px;
+        line-height: 1.08;
+        font-weight: 540;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .signal-label {
+        font-family: monospace;
+        font-size: 20px;
+        color: #a8bdc6;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .flow-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #12d6c4;
+        opacity: 0;
+        box-shadow: 0 0 14px rgba(18, 214, 196, 0.66);
+      }
+
+      .connector {
+        position: absolute;
+        top: 540px;
+        width: 138px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(18, 214, 196, 0.78), transparent);
+        opacity: 0.36;
+        z-index: 1;
+      }
+
+      .connector-left {
+        left: 616px;
+      }
+
+      .connector-right {
+        right: 616px;
+      }
+
+      .chart {
+        margin-top: auto;
+        height: 112px;
+        display: grid;
+        grid-template-columns: 136px 1fr;
+        gap: 20px;
+        align-items: end;
+        opacity: 0.88;
+      }
+
+      .bars {
+        height: 98px;
+        display: flex;
+        gap: 12px;
+        align-items: end;
+      }
+
+      .bar {
+        width: 20px;
+        height: var(--h);
+        min-height: 22px;
+        transform-origin: bottom;
+        background: linear-gradient(180deg, #7defe4, #12d6c4);
+        box-shadow: 0 0 13px rgba(18, 214, 196, 0.32);
+      }
+
+      .line-wrap {
+        height: 98px;
+        align-self: end;
+      }
+
+      .metric-line {
+        width: 100%;
+        height: 98px;
+        overflow: visible;
+      }
+
+      .metric-line path {
+        fill: none;
+        stroke: #7defe4;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 6px rgba(18, 214, 196, 0.52));
+      }
+
+      .metric-line circle {
+        fill: #7defe4;
+        filter: drop-shadow(0 0 6px rgba(18, 214, 196, 0.52));
+      }
+
+      .corner {
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        border-color: rgba(125, 239, 228, 0.32);
+        opacity: 0.65;
+      }
+
+      .corner.tl {
+        top: 64px;
+        left: 78px;
+        border-top: 1px solid;
+        border-left: 1px solid;
+      }
+
+      .corner.tr {
+        top: 64px;
+        right: 78px;
+        border-top: 1px solid;
+        border-right: 1px solid;
+      }
+
+      .corner.bl {
+        bottom: 64px;
+        left: 78px;
+        border-bottom: 1px solid;
+        border-left: 1px solid;
+      }
+
+      .corner.br {
+        right: 78px;
+        bottom: 64px;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="8"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="grid" data-layout-ignore></div>
+      <div class="vignette" data-layout-ignore></div>
+      <div class="corner tl" data-layout-ignore></div>
+      <div class="corner tr" data-layout-ignore></div>
+      <div class="corner bl" data-layout-ignore></div>
+      <div class="corner br" data-layout-ignore></div>
+      <div class="connector connector-left" data-layout-ignore></div>
+      <div class="connector connector-right" data-layout-ignore></div>
+
+      <div class="frame">
+        <div class="topline">
+          <div class="eyebrow">Sistema operativo de gestion</div>
+        </div>
+
+        <main class="system">
+          <section class="panel left-panel">
+            <h1 class="panel-title">Gestión dispersa</h1>
+            <div class="list">
+              <div class="item left-item">Costos poco claros</div>
+              <div class="item left-item">Datos aislados</div>
+              <div class="item left-item">Ventas sin seguimiento</div>
+              <div class="item left-item">Tareas manuales</div>
+            </div>
+          </section>
+
+          <section class="core-panel">
+            <h2 class="core-title">Diagnóstico CMA</h2>
+            <div class="core">
+              <div class="core-stack">
+                <span class="core-word">detectar</span>
+                <span class="core-word">ordenar</span>
+                <span class="core-word">priorizar</span>
+              </div>
+            </div>
+            <div class="signal-label">prioridad operativa</div>
+          </section>
+
+          <section class="panel right-panel">
+            <h2 class="panel-title">Empresa ordenada</h2>
+            <div class="list">
+              <div class="item right-item">Procesos definidos</div>
+              <div class="item right-item">Indicadores visibles</div>
+              <div class="item right-item">Herramientas conectadas</div>
+              <div class="item right-item">Decisiones medibles</div>
+            </div>
+            <div class="chart" data-layout-ignore>
+              <div class="bars">
+                <div class="bar" style="--h: 42px"></div>
+                <div class="bar" style="--h: 58px"></div>
+                <div class="bar" style="--h: 74px"></div>
+                <div class="bar" style="--h: 94px"></div>
+              </div>
+              <div class="line-wrap">
+                <svg class="metric-line" viewBox="0 0 250 112" aria-hidden="true">
+                  <path class="line-path" d="M8 96 C55 82, 74 76, 108 58 S174 32, 238 14" pathLength="1"></path>
+                  <circle class="line-dot" cx="238" cy="14" r="8"></circle>
+                </svg>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="flow-layer" data-layout-ignore>
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+        <span class="particle p8"></span>
+        <span class="particle p9"></span>
+        <span class="particle p10"></span>
+        <span class="particle p11"></span>
+        <span class="particle p12"></span>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+
+      const tl = gsap.timeline({ paused: true });
+
+      tl.set(".right-item", { opacity: 0.62, x: 0 }, 0);
+      tl.set(".bar", { scaleY: 0.34, opacity: 0.38 }, 0);
+      tl.set(".line-path", { strokeDasharray: 1, strokeDashoffset: 1, opacity: 0.32 }, 0);
+      tl.set(".line-dot", { opacity: 0, scale: 0.7, transformOrigin: "center center" }, 0);
+
+      tl.from(".topline", { opacity: 0, y: -28, duration: 0.65, ease: "power3.out" }, 0.18);
+      tl.from(".left-panel", { opacity: 0, x: -44, duration: 0.78, ease: "expo.out" }, 0.28);
+      tl.from(".core-panel", { opacity: 0, scale: 0.94, duration: 0.82, ease: "back.out(1.15)" }, 0.46);
+      tl.from(".right-panel", { opacity: 0, x: 44, duration: 0.78, ease: "circ.out" }, 0.66);
+      tl.from(".connector", { opacity: 0, scaleX: 0.2, duration: 0.72, ease: "power2.out" }, 0.82);
+
+      tl.from(".panel-title", { opacity: 0, y: 24, duration: 0.58, stagger: 0.08, ease: "power2.out" }, 0.52);
+      tl.from(".left-item", { opacity: 0, x: -18, y: 12, duration: 0.46, stagger: 0.09, ease: "sine.out" }, 0.82);
+      tl.from(".core-word", { opacity: 0, scale: 0.82, duration: 0.42, stagger: 0.1, ease: "back.out(1.6)" }, 1.08);
+      tl.from(".signal-label", { opacity: 0, y: 18, duration: 0.48, ease: "power1.out" }, 1.26);
+
+      tl.to(".left-item", {
+        x: (i) => [-4, 3, -3, 4][i],
+        y: (i) => [2, -3, 2, -2][i],
+        rotation: (i) => [-0.18, 0.14, -0.12, 0.16][i],
+        duration: 1.32,
+        stagger: 0.08,
+        repeat: 4,
+        yoyo: true,
+        ease: "sine.inOut"
+      }, 1.35);
+
+      tl.to(".core", {
+        scale: 1.028,
+        boxShadow: "0 0 66px rgba(18, 214, 196, 0.46), 0 0 118px rgba(18, 214, 196, 0.22), inset 0 0 40px rgba(125, 239, 228, 0.3)",
+        duration: 0.9,
+        repeat: 4,
+        yoyo: true,
+        ease: "sine.inOut"
+      }, 1.42);
+
+      const leftToCore = [
+        [534, 390, 836, 474],
+        [556, 464, 852, 516],
+        [534, 540, 842, 550],
+        [560, 612, 858, 592],
+        [512, 452, 828, 502],
+        [538, 574, 850, 564]
+      ];
+
+      const coreToRight = [
+        [1068, 474, 1360, 392],
+        [1080, 516, 1386, 464],
+        [1070, 550, 1364, 540],
+        [1082, 592, 1394, 614],
+        [1068, 502, 1374, 446],
+        [1078, 564, 1384, 574]
+      ];
+
+      leftToCore.forEach((p, i) => {
+        const selector = `.p${i + 1}`;
+        tl.set(selector, { x: p[0], y: p[1], opacity: 0, scale: 0.85 }, 1.72 + i * 0.12);
+        tl.to(selector, { opacity: 0.78, duration: 0.24, ease: "power1.out" }, 1.78 + i * 0.12);
+        tl.to(selector, { x: p[2], y: p[3], scale: 1.06, duration: 1.24, ease: "power2.inOut" }, 1.8 + i * 0.12);
+        tl.to(selector, { opacity: 0, scale: 0.58, duration: 0.3, ease: "power1.in" }, 2.76 + i * 0.12);
+      });
+
+      coreToRight.forEach((p, i) => {
+        const selector = `.p${i + 7}`;
+        tl.set(selector, { x: p[0], y: p[1], opacity: 0, scale: 0.85 }, 4.08 + i * 0.13);
+        tl.to(selector, { opacity: 0.82, duration: 0.22, ease: "power1.out" }, 4.12 + i * 0.13);
+        tl.to(selector, { x: p[2], y: p[3], scale: 1.05, duration: 1.16, ease: "power2.inOut" }, 4.15 + i * 0.13);
+        tl.to(selector, { opacity: 0, scale: 0.58, duration: 0.3, ease: "power1.in" }, 5.08 + i * 0.13);
+      });
+
+      tl.fromTo(".right-item", { x: 22 }, { opacity: 1, x: 0, duration: 0.45, stagger: 0.15, ease: "power2.out" }, 4.95);
+      tl.to(".bar", { scaleY: 1, opacity: 1, duration: 0.68, stagger: 0.12, ease: "expo.out" }, 5.35);
+      tl.to(".line-path", { strokeDashoffset: 0, opacity: 1, duration: 0.95, ease: "power2.out" }, 5.55);
+      tl.to(".line-dot", { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(1.7)" }, 6.22);
+
+      tl.to(".right-panel", {
+        boxShadow: "0 22px 78px rgba(0, 0, 0, 0.34), 0 0 38px rgba(18, 214, 196, 0.1), inset 0 1px 0 rgba(221, 235, 238, 0.07)",
+        duration: 0.76,
+        yoyo: true,
+        repeat: 1,
+        ease: "sine.inOut"
+      }, 6.14);
+
+      tl.to(".right-item", { opacity: 0.62, duration: 0.72, stagger: 0.04, ease: "sine.inOut" }, 7.08);
+      tl.to(".bar", { scaleY: 0.34, opacity: 0.38, duration: 0.72, stagger: 0.04, ease: "sine.inOut" }, 7.1);
+      tl.to(".line-path", { strokeDashoffset: 1, opacity: 0.32, duration: 0.74, ease: "sine.inOut" }, 7.12);
+      tl.to(".line-dot", { opacity: 0, scale: 0.7, duration: 0.42, ease: "sine.inOut" }, 7.3);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
