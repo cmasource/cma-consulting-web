@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { navItems } from "@/content/site";
+import { navItems, siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -34,7 +34,7 @@ export function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
           <a
-            href="#contacto"
+            href={siteConfig.diagnosisUrl}
             className="inline-flex min-h-11 items-center rounded-md bg-[#0D1B3D] px-5 text-sm font-semibold !text-white shadow-sm shadow-[#0D1B3D]/15 transition hover:-translate-y-0.5 hover:bg-[#009A9A] hover:!text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A]"
           >
             Solicitar diagnóstico
@@ -100,7 +100,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#contacto"
+              href={siteConfig.diagnosisUrl}
               className="mt-2 rounded-md bg-[#0D1B3D] px-3 py-3 text-center text-sm font-semibold !text-white"
               onClick={() => setOpen(false)}
             >

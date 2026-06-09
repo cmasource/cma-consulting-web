@@ -1,5 +1,12 @@
-const publicEnv = (value: string | undefined, fallback: string) =>
-  value?.trim() || fallback;
+const publicEnv = (value: string | undefined, fallback: string) => {
+  const normalized = value?.trim();
+
+  if (!normalized || /api\.example\.com|example\.com/i.test(normalized)) {
+    return fallback;
+  }
+
+  return normalized;
+};
 
 export const siteConfig = {
   name: "CMA Consulting",

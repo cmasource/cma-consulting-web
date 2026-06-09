@@ -79,6 +79,7 @@ export function BrandLogo({
           width={logo.width}
           height={logo.height}
           priority={priority}
+          loading={priority ? "eager" : undefined}
           sizes={logo.sizes}
           className="h-full w-full object-contain"
         />

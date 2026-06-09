@@ -1,19 +1,19 @@
-import { BarChart3, ClipboardCheck, GitBranch } from "lucide-react";
+import { BarChart3, Database, Settings2 } from "lucide-react";
 
 const modules = [
   {
-    title: "Diagnóstico empresarial",
-    text: "Lectura clara del estado actual, prioridades y puntos críticos.",
-    icon: ClipboardCheck,
+    title: "Gestión",
+    text: "Rutinas claras para seguir la operación.",
+    icon: Settings2,
   },
   {
-    title: "Procesos e indicadores",
-    text: "Flujos, responsables y métricas para hacer visible la operación.",
-    icon: GitBranch,
+    title: "Datos",
+    text: "Información conectada para decidir mejor.",
+    icon: Database,
   },
   {
-    title: "Implementación digital",
-    text: "Herramientas concretas cuando la mejora necesita tecnología.",
+    title: "Medición",
+    text: "Indicadores visibles y accionables.",
     icon: BarChart3,
   },
 ];
@@ -34,7 +34,7 @@ export function ConsultingCommandPanel() {
               Panel de gestión CMA
             </p>
             <p className="mt-1 text-sm font-semibold text-[#F8FAFC]">
-              Diagnóstico, orden e implementación
+              Gestión, datos y decisiones
             </p>
           </div>
           <div className="flex gap-1.5" aria-hidden="true">
@@ -67,7 +67,7 @@ export function ConsultingCommandPanel() {
             />
           </svg>
 
-          <div className="relative mx-auto flex min-h-[13rem] max-w-[38rem] items-center justify-center md:min-h-[17rem]">
+          <div className="relative mx-auto flex min-h-[12rem] max-w-[38rem] items-center justify-center md:min-h-[16rem]">
             <div
               aria-hidden="true"
               className="hero-core-ring absolute h-52 w-52 rounded-full border border-[#7FF0E6]/15 md:h-64 md:w-64"
@@ -86,23 +86,23 @@ export function ConsultingCommandPanel() {
                   núcleo
                 </p>
                 <p className="mt-2 text-base font-semibold leading-6 text-white md:text-lg">
-                  procesos
+                  gestión
                   <br />
-                  indicadores
+                  datos
                   <br />
-                  software
+                  tecnología
                 </p>
               </div>
             </div>
 
             <span className="absolute left-2 top-8 hidden rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs font-semibold text-white/82 shadow-lg shadow-black/10 backdrop-blur sm:block">
-              diagnóstico
+              procesos
             </span>
             <span className="absolute right-0 top-12 hidden rounded-full border border-[#7FF0E6]/18 bg-[#7FF0E6]/10 px-3 py-2 text-xs font-semibold text-[#DFFCF8] shadow-lg shadow-black/10 backdrop-blur sm:block">
               medición
             </span>
             <span className="absolute bottom-8 left-8 hidden rounded-full border border-white/10 bg-white/8 px-3 py-2 text-xs font-semibold text-white/82 shadow-lg shadow-black/10 backdrop-blur sm:block">
-              implementación
+              software
             </span>
           </div>
 
@@ -122,10 +122,10 @@ export function ConsultingCommandPanel() {
                       0{index + 1}
                     </span>
                   </div>
-                  <p className="mt-3 text-base font-semibold text-white md:mt-5">
+                  <p className="mt-3 text-base font-semibold text-white md:mt-4">
                     {module.title}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-white/66 max-sm:hidden md:mt-3">
+                  <p className="mt-2 text-sm leading-6 text-white/66 max-sm:hidden">
                     {module.text}
                   </p>
                 </article>
@@ -135,7 +135,7 @@ export function ConsultingCommandPanel() {
 
           <div className="mt-4 rounded-[1.15rem] border border-[#7FF0E6]/18 bg-[#7FF0E6]/8 p-4">
             <div className="grid gap-3 sm:grid-cols-3">
-              {["Costos claros", "Indicadores visibles", "Mejora medible"].map((item) => (
+              {["Operación visible", "Datos conectados", "Mejora medible"].map((item) => (
                 <div key={item}>
                   <div className="h-1.5 rounded-full bg-white/10">
                     <div className="command-meter h-full rounded-full bg-[#7FF0E6]" />

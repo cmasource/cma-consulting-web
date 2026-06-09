@@ -27,7 +27,7 @@ export function HeroEditorial() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <CTAButton
-                href="#contacto"
+                href={siteConfig.diagnosisUrl}
                 className="rounded-[10px] px-6 shadow-xl shadow-[#0D1B3D]/18"
               >
                 Solicitar diagnóstico

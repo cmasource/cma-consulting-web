@@ -29,7 +29,7 @@ export function Diagnosis360Section() {
             </SectionLead>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <CTAButton href={diagnosisHref}>Conocer Diagnóstico 360</CTAButton>
-              <CTAButton href="#contacto" variant="secondary">
+              <CTAButton href={diagnosisHref} variant="secondary">
                 Solicitar diagnóstico
               </CTAButton>
             </div>
