@@ -19,13 +19,11 @@ test.describe("CMA Consulting landing", () => {
     await expect(page.getByRole("link", { name: /Ver soluciones/i })).toBeVisible();
 
     for (const section of [
-      "Empezá con un diagnóstico claro.",
       "Del desorden operativo al sistema de gestión.",
-      "Qué podemos ordenar y mejorar",
-      "Implementación digital a medida",
-      "Herramientas y productos en desarrollo",
+      "Empezá con un diagnóstico claro.",
+      "Soluciones para ordenar y hacer crecer la operación",
       "Aplicaciones reales",
-      "Consultoría con visión de negocio y tecnología",
+      "Visión de negocio con capacidad real de implementación",
       "Hablemos de tu empresa",
     ]) {
       await expect(page.getByRole("heading", { name: section })).toBeVisible();
@@ -34,7 +32,6 @@ test.describe("CMA Consulting landing", () => {
     await expect(page.getByRole("heading", { name: "Gestión dispersa" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Diagnóstico CMA" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Empresa ordenada" })).toBeVisible();
-    await expect(page.getByText("cmaQuantBot")).toBeVisible();
     const bodyText = await page.locator("body").innerText();
     expect(bodyText).not.toContain("CMA_SOURCE");
     expect(bodyText).not.toContain("CMA Source");

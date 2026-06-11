@@ -1,10 +1,13 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { Badge, Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
+import { Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
 import { siteConfig } from "@/content/site";
 
-const fronts = ["Gestión", "Procesos", "Costos", "Ventas", "Datos", "Herramientas"];
-const findings = ["3 problemas críticos", "5 oportunidades", "Próximos pasos priorizados"];
+const outcomes = [
+  "Problemas detectados",
+  "Oportunidades visibles",
+  "Próximos pasos priorizados",
+];
 
 export function Diagnosis360Section() {
   const diagnosisHref =
@@ -13,94 +16,121 @@ export function Diagnosis360Section() {
       : "#contacto";
 
   return (
-    <section id="diagnostico-360" className="section-shell bg-white dark:bg-[#071225]">
+    <section id="diagnostico-360" className="section-shell bg-[#08152B] text-white">
       <div className="container-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.42fr_0.58fr] lg:items-center">
+        <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-[radial-gradient(circle_at_78%_18%,rgba(127,240,230,0.2),transparent_32%),linear-gradient(135deg,#071225,#0D1B3D_58%,#073A4A)] p-5 shadow-[0_36px_120px_rgba(7,18,37,0.32)] md:p-8 lg:p-10">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:52px_52px] opacity-50"
+          />
+          <div className="relative grid gap-8 lg:grid-cols-[0.45fr_0.55fr] lg:items-center">
           <div>
-            <Eyebrow>Diagnóstico 360</Eyebrow>
-            <SectionTitle className="mt-4">
+            <Eyebrow className="text-[#7FF0E6]">Diagnóstico 360</Eyebrow>
+            <SectionTitle className="mt-4 text-white">
               Empezá con un diagnóstico claro.
             </SectionTitle>
-            <SectionLead className="mt-5">
+            <SectionLead className="mt-5 max-w-2xl text-white/76">
               Antes de implementar software, automatizaciones o dashboards,
               necesitamos entender cómo funciona la empresa. Diagnóstico 360
               ayuda a ordenar problemas, detectar oportunidades y priorizar
               próximos pasos.
             </SectionLead>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {outcomes.map((outcome) => (
+                <div
+                  key={outcome}
+                  className="rounded-2xl border border-white/10 bg-white/8 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10"
+                >
+                  {outcome}
+                </div>
+              ))}
+            </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <CTAButton href={diagnosisHref}>Conocer Diagnóstico 360</CTAButton>
-              <CTAButton href={diagnosisHref} variant="secondary">
+              <CTAButton
+                href={diagnosisHref}
+                variant="secondary"
+                className="border-white/15 bg-white/10 text-white hover:bg-white hover:text-[#0D1B3D]"
+              >
                 Solicitar diagnóstico
               </CTAButton>
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-[2rem] border border-[#0D1B3D]/10 bg-[#F8FAFC] p-5 shadow-2xl shadow-[#0D1B3D]/10 dark:border-white/10 dark:bg-[#0A162E] dark:shadow-black/30 md:p-7">
-            <div className="premium-grid absolute inset-0 opacity-50" />
-            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#009A9A]/12 blur-3xl dark:bg-[#22C7C7]/12" />
-            <div className="relative rounded-[1.45rem] border border-[#0D1B3D]/10 bg-white p-5 dark:border-white/10 dark:bg-[#071225]">
+          <div className="relative overflow-hidden rounded-[1.8rem] border border-white/12 bg-white/[0.08] p-4 shadow-2xl shadow-black/20 backdrop-blur md:p-5">
+            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#7FF0E6]/18 blur-3xl" />
+            <div className="relative rounded-[1.45rem] border border-white/12 bg-[#071225]/88 p-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#007A7A] dark:text-[#5EEAD4]">
+                  <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#7FF0E6]">
                     Preview de evaluación
                   </p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#0D1B3D] dark:text-[#F8FAFC]">
+                  <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
                     Score de gestión 360
                   </h3>
                 </div>
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#009A9A]/25 bg-[#009A9A]/10 text-2xl font-semibold text-[#007A7A] dark:border-[#22C7C7]/30 dark:bg-[#22C7C7]/10 dark:text-[#5EEAD4]">
-                  72
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-[#7FF0E6]/30 bg-[#7FF0E6]/10 text-2xl font-semibold text-[#DFFCF8]">
+                  <svg aria-hidden="true" className="absolute inset-2 h-20 w-20 -rotate-90" viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.12)" strokeWidth="7" fill="none" />
+                    <circle cx="40" cy="40" r="34" stroke="#7FF0E6" strokeWidth="7" fill="none" strokeDasharray="214" strokeDashoffset="60" strokeLinecap="round" />
+                  </svg>
+                  <span className="relative">72</span>
                 </div>
               </div>
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {fronts.map((front, index) => (
-                  <div
-                    key={front}
-                    className="rounded-2xl border border-[#0D1B3D]/10 bg-[#F8FAFC] p-4 dark:border-white/10 dark:bg-[#0F1B36]"
-                  >
-                    <div className="mb-3 flex items-center justify-between">
-                      <span className="text-sm font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
-                        {front}
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {[
+                  ["Gestión", "72%"],
+                  ["Procesos", "58%"],
+                  ["Datos", "64%"],
+                  ["Herramientas", "49%"],
+                ].map(([label, value], index) => (
+                  <div key={label} className="rounded-2xl border border-white/10 bg-white/8 px-4 py-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-sm font-semibold text-white">
+                        {label}
                       </span>
-                      <span className="font-mono text-xs font-bold text-[#007A7A] dark:text-[#5EEAD4]">
-                        {62 + index * 5}%
+                      <span className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-[#7FF0E6]">
+                        {value}
                       </span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-[#0D1B3D]/10 dark:bg-white/10">
+                    <div className="mt-3 h-1.5 rounded-full bg-white/10">
                       <div
-                        className="h-full rounded-full bg-[#009A9A] dark:bg-[#22C7C7]"
-                        style={{ width: `${62 + index * 5}%` }}
+                        className="h-full rounded-full bg-[#7FF0E6]"
+                        style={{ width: `${52 + index * 9}%` }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 grid gap-3 md:grid-cols-[0.9fr_1.1fr]">
-                <div className="rounded-2xl border border-[#0D1B3D]/10 bg-[#F8FAFC] p-4 dark:border-white/10 dark:bg-[#0F1B36]">
-                  <Badge>Problemas detectados</Badge>
+              <div className="mt-5 grid gap-3 md:grid-cols-[0.9fr_1.1fr]">
+                <div className="rounded-2xl border border-white/10 bg-white/8 p-4">
+                  <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#7FF0E6]">
+                    Problemas detectados
+                  </p>
                   <div className="mt-4 grid gap-2">
-                    {findings.map((item) => (
-                      <div key={item} className="flex items-center gap-2 text-sm font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
-                        <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#007A7A] dark:text-[#5EEAD4]" />
+                    {["Costos poco claros", "Datos aislados", "Seguimiento irregular"].map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-sm font-semibold text-white/86">
+                        <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#7FF0E6]" />
                         {item}
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="rounded-2xl border border-[#009A9A]/20 bg-[#009A9A]/8 p-4 dark:border-[#22C7C7]/25 dark:bg-[#22C7C7]/8">
-                  <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#007A7A] dark:text-[#5EEAD4]">
-                    Recomendación inicial
+                <div className="rounded-2xl border border-[#7FF0E6]/20 bg-[#7FF0E6]/10 p-4">
+                  <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#7FF0E6]">
+                    Próximos pasos
                   </p>
-                  <p className="mt-3 text-sm font-semibold leading-7 text-[#0D1B3D] dark:text-[#F8FAFC]">
-                    Ordenar procesos críticos antes de incorporar nuevas
-                    herramientas.
+                  <p className="mt-3 text-sm font-semibold leading-7 text-white">
+                    Priorizar frentes críticos y definir qué ordenar, medir o
+                    construir primero.
                   </p>
-                  <ArrowRight aria-hidden="true" className="mt-4 h-5 w-5 text-[#007A7A] dark:text-[#5EEAD4]" />
+                  <ArrowRight aria-hidden="true" className="mt-4 h-5 w-5 text-[#7FF0E6]" />
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

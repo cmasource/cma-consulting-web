@@ -39,8 +39,8 @@ export const siteConfig = {
 
 export const navItems = [
   { label: "Inicio", href: "#inicio" },
+  { label: "Transformación", href: "#transformacion" },
   { label: "Diagnóstico 360", href: "#diagnostico-360" },
-  { label: "Servicios", href: "#servicios" },
   { label: "Soluciones", href: "#soluciones" },
   { label: "Aplicaciones", href: "#portfolio" },
   { label: "Sobre mí", href: "#sobre-mi" },

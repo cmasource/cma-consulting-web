@@ -7,7 +7,7 @@ import { CmaTransformationMotion } from "@/components/visuals/CmaTransformationM
 
 export function OperationalManifestoSection() {
   return (
-    <section className="section-shell editorial-band bg-white dark:bg-[#071225]">
+    <section id="transformacion" className="section-shell editorial-band bg-white dark:bg-[#071225]">
       <div className="container-shell">
         <div className="grid gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
           <div>
@@ -24,7 +24,7 @@ export function OperationalManifestoSection() {
           </div>
         </div>
 
-        <div className="mt-11">
+        <div className="mt-10 lg:mt-12">
           <CmaTransformationMotion />
         </div>
       </div>

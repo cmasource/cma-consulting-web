@@ -1,6 +1,6 @@
 import { CTAButton } from "@/components/ui/CTAButton";
 import { Eyebrow } from "@/components/ui/Typography";
-import { ConsultingCommandPanel } from "@/components/visuals/ConsultingCommandPanel";
+import { HeroImpactPanel } from "@/components/visuals/HeroImpactPanel";
 import { siteConfig } from "@/content/site";
 
 export function HeroEditorial() {
@@ -54,7 +54,7 @@ export function HeroEditorial() {
           </div>
 
           <div className="chapter-reveal relative">
-            <ConsultingCommandPanel />
+            <HeroImpactPanel />
           </div>
         </div>
       </div>
