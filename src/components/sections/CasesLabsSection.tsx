@@ -12,14 +12,14 @@ const projectCards = [
     href: "https://victor-abadie-web.vercel.app/",
     accentColor: "emerald" as const,
     previewKind: "real-estate" as const,
-    previewImage: undefined,
+    previewImage: "/portfolio/victor-abadie-preview.png",
   },
   {
     ...portfolioItems[1],
     href: "https://market-intelligence-dashboard-pi.vercel.app/",
     accentColor: "cyan" as const,
     previewKind: "market" as const,
-    previewImage: undefined,
+    previewImage: "/portfolio/market-intelligence-preview.png",
   },
   {
     title: "Hydria ecommerce",
@@ -31,7 +31,7 @@ const projectCards = [
     href: "https://hydria-web.vercel.app/",
     accentColor: "hydria" as const,
     previewKind: "hydria" as const,
-    previewImage: undefined,
+    previewImage: "/portfolio/hydria-preview.png",
   },
   {
     title: "Diagnóstico 360",
@@ -43,7 +43,7 @@ const projectCards = [
     href: "",
     accentColor: "teal" as const,
     previewKind: "diagnosis" as const,
-    previewImage: undefined,
+    previewImage: "/portfolio/diagnostico-360-preview.png",
   },
 ];
 
