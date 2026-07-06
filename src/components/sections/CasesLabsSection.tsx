@@ -5,10 +5,27 @@ import {
   SectionTitle,
 } from "@/components/ui/Typography";
 import { ProjectPreviewCard } from "@/components/ui/ProjectPreviewCard";
+import { siteConfig } from "@/content/site";
 
 const projectCards = [
   {
     ...portfolioItems[0],
+    description:
+      "Web inmobiliaria para centralizar propiedades, consultas y gestión comercial.",
+    caseHighlights: [
+      {
+        label: "Problema",
+        text: "Publicación dispersa y baja autonomía para mostrar propiedades.",
+      },
+      {
+        label: "Solución",
+        text: "Catálogo, fichas, panel de carga, filtros y WhatsApp.",
+      },
+      {
+        label: "Valor",
+        text: "Oferta centralizada y gestión comercial más clara.",
+      },
+    ],
     href: "https://victor-abadie-web.vercel.app/",
     accentColor: "emerald" as const,
     previewKind: "real-estate" as const,
@@ -16,6 +33,22 @@ const projectCards = [
   },
   {
     ...portfolioItems[1],
+    description:
+      "Dashboard financiero para leer mercados, activos e información clave en un solo lugar.",
+    caseHighlights: [
+      {
+        label: "Problema",
+        text: "Información financiera dispersa y lectura manual.",
+      },
+      {
+        label: "Solución",
+        text: "Panel con activos, búsqueda, reportes y contexto de mercado.",
+      },
+      {
+        label: "Valor",
+        text: "Decisiones con datos y seguimiento más ordenado.",
+      },
+    ],
     href: "https://market-intelligence-dashboard-pi.vercel.app/",
     accentColor: "cyan" as const,
     previewKind: "market" as const,
@@ -26,7 +59,21 @@ const projectCards = [
     type: "Ecommerce + experiencia de producto",
     status: "Caso aplicado",
     description:
-      "Tienda digital para producto físico, con ficha comercial, variantes, carrito y checkout preparado para venta online.",
+      "Ecommerce para presentar producto, variantes, compra y experiencia comercial.",
+    caseHighlights: [
+      {
+        label: "Problema",
+        text: "Necesidad de vender y mostrar producto físico de forma clara.",
+      },
+      {
+        label: "Solución",
+        text: "Ficha de producto, carrito, variantes y checkout.",
+      },
+      {
+        label: "Valor",
+        text: "Canal digital preparado para conversión.",
+      },
+    ],
     tags: ["Ecommerce", "Producto", "Checkout", "Retail"],
     href: "https://hydria-web.vercel.app/",
     accentColor: "hydria" as const,
@@ -38,9 +85,23 @@ const projectCards = [
     type: "Herramienta de evaluación",
     status: "En desarrollo",
     description:
-      "Preview de herramienta para leer el estado de gestión, detectar problemas y priorizar próximos pasos.",
+      "Herramienta propia para leer gestión, detectar problemas y priorizar mejoras.",
+    caseHighlights: [
+      {
+        label: "Problema",
+        text: "Dificultad para saber por dónde empezar.",
+      },
+      {
+        label: "Solución",
+        text: "Score, frentes críticos y próximos pasos.",
+      },
+      {
+        label: "Valor",
+        text: "Primera lectura clara para definir acciones.",
+      },
+    ],
     tags: ["Diagnóstico", "Gestión", "SaaS", "Prioridades"],
-    href: "",
+    href: siteConfig.diagnosisUrl,
     accentColor: "teal" as const,
     previewKind: "diagnosis" as const,
     previewImage: "/portfolio/diagnostico-360-preview.png",
@@ -75,6 +136,7 @@ export function CasesLabsSection() {
               previewImage={item.previewImage}
               status={item.status}
               previewKind={item.previewKind}
+              caseHighlights={item.caseHighlights}
             />
           ))}
         </div>

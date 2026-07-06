@@ -13,13 +13,14 @@ export function OperationalManifestoSection() {
           <div>
             <Eyebrow>Transformación operativa</Eyebrow>
             <SectionTitle className="mt-4">
-              Del desorden operativo al sistema de gestión.
+              Del desorden financiero-operativo al sistema de gestión.
             </SectionTitle>
           </div>
           <div className="lg:pb-2">
             <SectionLead className="max-w-3xl">
-              Transformamos problemas dispersos en procesos, indicadores y
-              herramientas concretas para operar con más claridad.
+              Muchas pymes no tienen solo un problema de ventas o de software:
+              tienen costos poco claros, caja desordenada, procesos informales y
+              decisiones sin datos. Ayudamos a ordenar ese sistema.
             </SectionLead>
           </div>
         </div>

@@ -15,6 +15,10 @@ type ProjectPreviewCardProps = {
   logoImage?: string;
   status: string;
   previewKind: PreviewKind;
+  caseHighlights?: Array<{
+    label: string;
+    text: string;
+  }>;
 };
 
 const accents = {
@@ -52,7 +56,7 @@ const accents = {
     button: "bg-teal-700 hover:bg-teal-800",
     bar: "bg-teal-400",
     glow: "bg-teal-500/18",
-    address: "diagnostico.cmaconsulting",
+    address: "CMA Diagnóstico 360",
   },
 };
 
@@ -67,18 +71,20 @@ export function ProjectPreviewCard({
   logoImage,
   status,
   previewKind,
+  caseHighlights,
 }: ProjectPreviewCardProps) {
   const accent = accents[accentColor];
+  const isExternalHref = href?.startsWith("http");
 
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-[1.8rem] border p-4 shadow-xl shadow-[#0D1B3D]/8 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0D1B3D]/14 md:p-5",
+        "group relative overflow-hidden rounded-[1.65rem] border p-3.5 shadow-xl shadow-[#0D1B3D]/8 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0D1B3D]/14 md:p-4",
         accent.shell,
       )}
     >
       <div className={cn("absolute -right-20 -top-20 h-56 w-56 rounded-full blur-3xl", accent.glow)} />
-      <div className="relative grid gap-5 xl:grid-cols-[1.08fr_0.92fr] xl:items-center">
+      <div className="relative grid gap-4 xl:grid-cols-[1.18fr_0.82fr] xl:items-center">
         <BrowserShowcase
           accent={accent}
           previewImage={previewImage}
@@ -96,18 +102,36 @@ export function ProjectPreviewCard({
             </span>
           </div>
 
-          <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-[#0D1B3D] dark:text-[#F8FAFC]">
+          <h3 className="mt-2.5 text-[1.35rem] font-semibold leading-tight tracking-[-0.03em] text-[#0D1B3D] dark:text-[#F8FAFC]">
             {title}
           </h3>
-          <p className="mt-3 text-sm leading-7 text-[#475467] dark:text-[#CBD5E1]">
+          <p className="mt-2 text-sm leading-6 text-[#475467] dark:text-[#CBD5E1]">
             {description}
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          {caseHighlights?.length ? (
+            <div className="mt-3 grid gap-2">
+              {caseHighlights.map((highlight) => (
+                <div
+                  key={highlight.label}
+                  className="rounded-xl border border-[#0D1B3D]/10 bg-white/70 px-3 py-2 dark:border-white/10 dark:bg-[#071225]/70"
+                >
+                  <p className={cn("font-mono text-[0.62rem] font-bold uppercase tracking-[0.16em]", accent.text)}>
+                    {highlight.label}
+                  </p>
+                  <p className="mt-0.5 text-xs leading-5 text-[#475467] dark:text-[#CBD5E1]">
+                    {highlight.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          <div className="mt-4 flex flex-wrap gap-2">
             {tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-[#0D1B3D]/10 bg-white/75 px-3 py-1 text-xs font-semibold text-[#0D1B3D] dark:border-white/10 dark:bg-[#071225]/80 dark:text-[#CBD5E1]"
+                className="rounded-full border border-[#0D1B3D]/10 bg-white/75 px-2.5 py-1 text-[0.7rem] font-semibold text-[#0D1B3D] dark:border-white/10 dark:bg-[#071225]/80 dark:text-[#CBD5E1]"
               >
                 {tag}
               </span>
@@ -117,10 +141,10 @@ export function ProjectPreviewCard({
           {href ? (
             <a
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={isExternalHref ? "_blank" : undefined}
+              rel={isExternalHref ? "noopener noreferrer" : undefined}
               className={cn(
-                "mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] px-4 text-sm font-semibold !text-white transition hover:-translate-y-0.5",
+                "mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-[10px] px-3.5 text-sm font-semibold !text-white transition hover:-translate-y-0.5",
                 accent.button,
               )}
             >
@@ -128,7 +152,7 @@ export function ProjectPreviewCard({
               <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </a>
           ) : (
-            <span className="mt-6 inline-flex min-h-11 items-center justify-center rounded-[10px] border border-[#0D1B3D]/10 bg-white/78 px-4 text-sm font-semibold text-[#475467] dark:border-white/10 dark:bg-[#071225]/78 dark:text-[#CBD5E1]">
+            <span className="mt-4 inline-flex min-h-10 items-center justify-center rounded-[10px] border border-[#0D1B3D]/10 bg-white/78 px-3.5 text-sm font-semibold text-[#475467] dark:border-white/10 dark:bg-[#071225]/78 dark:text-[#CBD5E1]">
               En desarrollo
             </span>
           )}
@@ -152,8 +176,8 @@ function BrowserShowcase({
   return (
     <div className="relative">
       <div className={cn("absolute -inset-4 rounded-[2rem] blur-2xl", accent.glow)} />
-      <div className="relative overflow-hidden rounded-[1.35rem] border border-white/70 bg-white shadow-2xl shadow-[#0D1B3D]/16 dark:border-white/12 dark:bg-[#071225]">
-        <div className="flex items-center gap-3 border-b border-[#0D1B3D]/10 bg-white/92 px-3 py-2 dark:border-white/10 dark:bg-[#0A162E]">
+      <div className="relative overflow-hidden rounded-[1.25rem] border border-white/70 bg-white shadow-2xl shadow-[#0D1B3D]/16 dark:border-white/12 dark:bg-[#071225]">
+        <div className="flex items-center gap-3 border-b border-[#0D1B3D]/10 bg-white/92 px-3 py-1.5 dark:border-white/10 dark:bg-[#0A162E]">
           <div className="flex gap-1.5" aria-hidden="true">
             <span className="h-2.5 w-2.5 rounded-full bg-[#FF6B6B]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#F4C542]" />
@@ -166,7 +190,7 @@ function BrowserShowcase({
           </div>
         </div>
 
-        <div className="relative aspect-[16/10] overflow-hidden bg-[#F8FAFC] dark:bg-[#071225]">
+        <div className="relative aspect-[16/9] overflow-hidden bg-[#F8FAFC] dark:bg-[#071225]">
           {previewImage ? (
             <Image
               src={previewImage}

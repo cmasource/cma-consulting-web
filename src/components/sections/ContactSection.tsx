@@ -6,23 +6,26 @@ import { Badge, Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typog
 import { siteConfig } from "@/content/site";
 
 const inquiryTypes = [
-  "Consultoría empresarial",
-  "Web / ecommerce",
-  "Software / app",
-  "Automatización",
-  "Dashboard",
-  "ERP / sistema de gestión",
-  "Otro",
+  "Quiero ordenar mis números, costos o rentabilidad.",
+  "Necesito mejorar mi caja o control financiero.",
+  "Quiero ordenar procesos internos.",
+  "Necesito indicadores o un tablero de gestión.",
+  "Quiero automatizar tareas manuales.",
+  "Quiero mejorar seguimiento comercial o cobranzas.",
+  "Necesito una web, sistema o herramienta digital.",
+  "Quiero implementar o mejorar un ERP/sistema de gestión.",
+  "No sé exactamente qué necesito, quiero un diagnóstico.",
 ];
 
 const topics = [
-  "ordenar procesos",
-  "mejorar costos",
-  "dashboards",
-  "landing pages",
-  "ecommerce",
+  "caja",
+  "costos",
+  "rentabilidad",
+  "procesos",
+  "indicadores",
+  "ventas",
+  "cobranzas",
   "automatización",
-  "diagnóstico",
 ];
 
 const steps = ["Nos escribís", "Entendemos tu necesidad", "Definimos próximos pasos"];
@@ -78,7 +81,7 @@ export function ContactSection() {
       `Rubro: ${getValue("industry") || "-"}`,
       `Email: ${getValue("email")}`,
       `Teléfono: ${getValue("phone") || "-"}`,
-      `Tipo de consulta: ${getValue("type") || "-"}`,
+      `Problema principal: ${getValue("type") || "-"}`,
       "",
       "Mensaje:",
       getValue("message"),
@@ -110,8 +113,9 @@ export function ContactSection() {
             <Eyebrow>Contacto</Eyebrow>
             <SectionTitle className="mt-4">Hablemos de tu empresa</SectionTitle>
             <SectionLead className="mt-5">
-              Contanos qué necesitás ordenar, construir o mejorar. Te ayudamos a
-              convertir una necesidad difusa en próximos pasos concretos.
+              Contanos qué necesitás ordenar: números, caja, costos, procesos,
+              indicadores, ventas, cobranzas o herramientas. Empezamos por
+              entender el problema y definir próximos pasos concretos.
             </SectionLead>
 
             <div className="mt-8 rounded-[1.6rem] border border-[#0D1B3D]/10 bg-[#F8FAFC] p-5 shadow-xl shadow-[#0D1B3D]/8 dark:border-white/10 dark:bg-[#0F1B36]">
@@ -241,11 +245,11 @@ export function ContactSection() {
                     />
                   </label>
                   <label className="text-sm font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
-                    Tipo de consulta
-                    <select
+                  Problema principal
+                  <select
                       name="type"
                       className={inputClass}
-                      defaultValue="Consultoría empresarial"
+                      defaultValue="No sé exactamente qué necesito, quiero un diagnóstico."
                     >
                       {inquiryTypes.map((type) => (
                         <option key={type} value={type}>
@@ -261,7 +265,7 @@ export function ContactSection() {
                   <textarea
                     name="message"
                     rows={6}
-                    placeholder="Contanos brevemente qué necesitás mejorar o implementar."
+                    placeholder="Contanos brevemente qué necesitás ordenar: números, caja, costos, procesos, indicadores, ventas, cobranzas o herramientas."
                     className={`${inputClass} pt-3`}
                     required
                   />
@@ -283,7 +287,7 @@ export function ContactSection() {
                   type="submit"
                   className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-[10px] bg-[#0D1B3D] px-5 text-sm font-semibold !text-white transition hover:-translate-y-0.5 hover:bg-[#009A9A] hover:!text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A] md:w-auto"
                 >
-                  Enviar consulta
+                  Solicitar Diagnóstico 360
                 </button>
               </div>
             </form>

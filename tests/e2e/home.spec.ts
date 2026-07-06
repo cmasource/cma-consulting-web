@@ -6,7 +6,7 @@ test.describe("CMA Consulting landing", () => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Gestión, procesos y software para operar mejor.",
+      "Ordená números, procesos y decisiones.",
     );
 
     const headerLogos = page.getByRole("banner").getByAltText("CMA Consulting");
@@ -14,16 +14,16 @@ test.describe("CMA Consulting landing", () => {
     await expect(headerLogos.first()).toBeVisible();
 
     await expect(
-      page.getByRole("link", { name: /Solicitar diagnóstico/i }).first(),
+      page.getByRole("link", { name: /Solicitar Diagnóstico 360/i }).first(),
     ).toBeVisible();
-    await expect(page.getByRole("link", { name: /Ver soluciones/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Ver cómo trabajamos/i })).toBeVisible();
 
     for (const section of [
-      "Del desorden operativo al sistema de gestión.",
+      "Del desorden financiero-operativo al sistema de gestión.",
       "Empezá con un diagnóstico claro.",
-      "Soluciones para ordenar y hacer crecer la operación",
+      "Qué puede contratar una pyme",
       "Aplicaciones reales",
-      "Visión de negocio con capacidad real de implementación",
+      "Gestión, finanzas y tecnología aplicada para pymes",
       "Hablemos de tu empresa",
     ]) {
       await expect(page.getByRole("heading", { name: section })).toBeVisible();
@@ -62,10 +62,10 @@ test.describe("CMA Consulting landing", () => {
     await form.getByLabel("Email").fill("demo@empresa.com");
     await form
       .getByLabel("Mensaje")
-      .fill("Necesito ordenar procesos y evaluar una solución digital.");
+      .fill("Necesito ordenar costos, caja y procesos internos.");
     await expect(form.getByLabel("Nombre")).toHaveValue("Cliente demo");
     await expect(form.getByLabel("Email")).toHaveValue("demo@empresa.com");
-    await form.getByRole("button", { name: /Enviar consulta/i }).click();
+    await form.getByRole("button", { name: /Solicitar Diagnóstico 360/i }).click();
 
     await expect(
       page.getByText(/Te vamos a redirigir para enviar la consulta/i),

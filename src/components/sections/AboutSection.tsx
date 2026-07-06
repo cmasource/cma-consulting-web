@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { ArrowUpRight, MapPin, ShieldCheck } from "lucide-react";
 import { Eyebrow, SectionTitle } from "@/components/ui/Typography";
+import { siteConfig } from "@/content/site";
 
-const profileItems = ["Negocio", "Procesos", "Tecnología"];
+const profileItems = ["Finanzas y gestión", "Procesos y datos", "Tecnología aplicada"];
 
 export function AboutSection() {
   return (
@@ -14,19 +15,18 @@ export function AboutSection() {
           <div className="lg:pl-4">
             <Eyebrow>Sobre Matías</Eyebrow>
             <SectionTitle className="mt-4 max-w-3xl">
-              Visión de negocio con capacidad real de implementación
+              Gestión, finanzas y tecnología aplicada para pymes
             </SectionTitle>
             <div className="mt-5 max-w-3xl space-y-4 text-base leading-8 text-[#475467] dark:text-[#CBD5E1]">
               <p>
-                Soy Matías Alvarez, Licenciado en Administración de Empresas y
-                Analista IT. Mi perfil combina gestión empresarial, tecnología,
-                datos, procesos y desarrollo de soluciones digitales.
+                Soy Matías Álvarez, Licenciado en Administración de Empresas,
+                Analista IT y consultor en gestión, finanzas y tecnología
+                aplicada.
               </p>
               <p>
-                CMA Consulting nace para acompañar a PyMEs, comercios,
-                profesionales e industrias que necesitan ordenar su gestión y
-                aplicar tecnología de forma práctica, medible y alineada al
-                negocio.
+                Combino experiencia en procesos, datos, sistemas y análisis de
+                negocio para ayudar a pymes a ordenar su gestión, entender sus
+                números y tomar mejores decisiones.
               </p>
             </div>
 
@@ -80,12 +80,11 @@ function LinkedInProfileCard() {
 
         <div className="mt-4">
           <h3 className="flex flex-wrap items-center gap-2 text-2xl font-semibold tracking-[-0.03em] text-[#0D1B3D] dark:text-[#F8FAFC]">
-            Matías Alvarez
-            <span className="text-sm font-medium text-[#667085] dark:text-[#CBD5E1]">1er</span>
+            Matías Álvarez
           </h3>
           <p className="mt-2 text-sm font-semibold leading-6 text-[#101828] dark:text-[#F8FAFC]">
-            Analista IT | Consultor Empresarial | Data Enthusiast | PL SQL |
-            Python | Lic. en Administración de Empresas
+            Licenciado en Administración de Empresas, Analista IT y consultor
+            en gestión, finanzas y tecnología aplicada.
           </p>
           <p className="mt-3 flex items-center gap-2 text-sm text-[#667085] dark:text-[#CBD5E1]">
             <MapPin aria-hidden="true" className="h-4 w-4" />
@@ -95,13 +94,13 @@ function LinkedInProfileCard() {
 
         <div className="mt-5 rounded-[1.1rem] border border-[#0D1B3D]/10 bg-[#F8FAFC] p-4 dark:border-white/10 dark:bg-[#071225]">
           <p className="text-sm leading-7 text-[#475467] dark:text-[#CBD5E1]">
-            Gestión, procesos, datos y tecnología aplicada para convertir
-            problemas operativos en decisiones y herramientas concretas.
+            Procesos, datos, sistemas y análisis de negocio para ordenar
+            números, gestión y decisiones.
           </p>
         </div>
 
         <a
-          href="https://www.linkedin.com/in/cmatiasalvarez/"
+          href={siteConfig.contact.linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-[10px] border border-[#0D1B3D]/10 bg-white px-4 text-sm font-semibold text-[#0D1B3D] transition hover:-translate-y-0.5 hover:border-[#0A66C2]/30 hover:text-[#0A66C2] dark:border-white/10 dark:bg-[#071225] dark:text-[#F8FAFC] dark:hover:text-[#7FF0E6]"

@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 const scatteredItems = [
   {
     label: "Costos poco claros",
-    className: "left-[4%] top-[8%] sm:left-[5%] sm:top-[9%]",
+    className: "left-[7%] top-[16%] sm:left-[8%] sm:top-[16%]",
     rotate: "-1.2deg",
     driftX: "4px",
     driftY: "-7px",
@@ -11,8 +11,8 @@ const scatteredItems = [
     returnY: "-4px",
   },
   {
-    label: "Ventas sin seguimiento",
-    className: "right-[2%] top-[25%] sm:top-[21%]",
+    label: "Caja desordenada",
+    className: "right-[6%] top-[23%] sm:right-[7%] sm:top-[22%]",
     rotate: "1.1deg",
     driftX: "-4px",
     driftY: "-6px",
@@ -20,8 +20,8 @@ const scatteredItems = [
     returnY: "-3px",
   },
   {
-    label: "Datos aislados",
-    className: "left-[7%] bottom-[36%] sm:left-[10%] sm:bottom-[20%]",
+    label: "Márgenes inciertos",
+    className: "left-[10%] bottom-[23%] sm:left-[11%] sm:bottom-[22%]",
     rotate: "0.9deg",
     driftX: "3px",
     driftY: "6px",
@@ -29,8 +29,8 @@ const scatteredItems = [
     returnY: "3px",
   },
   {
-    label: "Tareas manuales",
-    className: "right-[4%] bottom-[12%] sm:right-[7%]",
+    label: "Datos aislados",
+    className: "right-[8%] bottom-[17%] sm:right-[10%] sm:bottom-[16%]",
     rotate: "-0.8deg",
     driftX: "-3px",
     driftY: "7px",
@@ -41,27 +41,25 @@ const scatteredItems = [
 
 const diagnosticLabels = [
   { label: "COSTOS", className: "left-1/2 top-2 -translate-x-1/2" },
-  { label: "VENTAS", className: "right-2 top-1/2 -translate-y-1/2" },
-  { label: "PROCESOS", className: "bottom-2 left-1/2 -translate-x-1/2" },
+  { label: "CAJA", className: "right-2 top-1/2 -translate-y-1/2" },
+  { label: "MÁRGENES", className: "bottom-2 left-1/2 -translate-x-1/2" },
   { label: "DATOS", className: "left-2 top-1/2 -translate-y-1/2" },
 ];
 
 const orderedItems = [
-  "Procesos definidos",
+  "Caja ordenada",
   "Indicadores visibles",
-  "Herramientas conectadas",
-  "Decisiones medibles",
+  "Procesos medibles",
+  "Decisiones con datos",
 ];
 
 const diagnosticSteps = ["detectar", "ordenar", "priorizar"];
 
 const weakSignals = [
-  { left: "9%", top: "16%" },
-  { left: "42%", top: "18%" },
-  { left: "77%", top: "34%" },
-  { left: "22%", top: "72%" },
-  { left: "56%", top: "58%" },
-  { left: "88%", top: "78%" },
+  { left: "18%", top: "18%" },
+  { left: "72%", top: "30%" },
+  { left: "25%", top: "75%" },
+  { left: "80%", top: "70%" },
 ];
 
 export function CmaTransformationMotion() {
@@ -486,10 +484,10 @@ function ScatteredPanel() {
           Gestión dispersa
         </h3>
         <p className="mt-4 max-w-sm text-sm leading-7 text-white/68">
-          Señales operativas valiosas, pero repartidas entre planillas, criterios informales y rutinas manuales.
+          Números, procesos y señales valiosas, pero repartidas entre planillas, criterios informales y rutinas manuales.
         </p>
 
-        <div className="relative mx-auto mt-8 min-h-[268px] w-full max-w-[24rem] px-4 pb-5 pt-5">
+        <div className="relative mx-auto mt-8 min-h-[248px] w-full max-w-[24rem] px-6 py-5">
           {weakSignals.map((signal, index) => (
             <span
               key={`${signal.left}-${signal.top}`}
@@ -505,7 +503,7 @@ function ScatteredPanel() {
           {scatteredItems.map((item, index) => (
             <div
               key={item.label}
-              className={`cma-signal-chip absolute max-w-[15.75rem] rounded-[1rem] border border-white/10 bg-[#0D1B3D]/74 px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_46px_rgba(0,0,0,0.22)] backdrop-blur ${item.className}`}
+              className={`cma-signal-chip absolute max-w-[12rem] rounded-[1rem] border border-white/10 bg-[#0D1B3D]/78 px-3.5 py-2.5 text-[0.8rem] font-semibold leading-5 text-white shadow-[0_18px_46px_rgba(0,0,0,0.2)] backdrop-blur ${item.className}`}
               style={{
                 "--chip-rotate": item.rotate,
                 "--chip-x": item.driftX,
@@ -541,7 +539,7 @@ function DiagnosticCore() {
           Diagnóstico CMA
         </h3>
         <p className="mt-4 max-w-sm text-sm leading-7 text-white/72">
-          Detectar, ordenar y priorizar para convertir problemas dispersos en un sistema de gestión claro.
+          Detectar problemas de caja, costos, márgenes, procesos y datos para priorizar qué resolver primero.
         </p>
 
         <div className="relative mx-auto mt-7 flex h-[19.5rem] w-full max-w-[19.5rem] items-center justify-center">
@@ -637,7 +635,7 @@ function OrderedPanel() {
           Empresa ordenada
         </h3>
         <p className="mt-4 max-w-sm text-sm leading-7 text-[#475467]">
-          Procesos, indicadores y herramientas conectadas para tomar decisiones medibles.
+          Caja, costos, procesos e indicadores conectados para tomar decisiones medibles.
         </p>
 
         <div className="cma-dashboard-panel mt-7 rounded-[1.25rem] border border-[#0D1B3D]/10 bg-white/88 p-4 shadow-[0_24px_70px_rgba(13,27,61,0.12)] backdrop-blur">

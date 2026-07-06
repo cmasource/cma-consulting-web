@@ -4,9 +4,9 @@ import { Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
 import { siteConfig } from "@/content/site";
 
 const outcomes = [
-  "Problemas detectados",
-  "Oportunidades visibles",
-  "Próximos pasos priorizados",
+  "Rentabilidad y caja",
+  "Costos y procesos",
+  "Prioridades claras",
 ];
 
 export function Diagnosis360Section() {
@@ -30,10 +30,10 @@ export function Diagnosis360Section() {
               Empezá con un diagnóstico claro.
             </SectionTitle>
             <SectionLead className="mt-5 max-w-2xl text-white/76">
-              Antes de implementar software, automatizaciones o dashboards,
-              necesitamos entender cómo funciona la empresa. Diagnóstico 360
-              ayuda a ordenar problemas, detectar oportunidades y priorizar
-              próximos pasos.
+              Una lectura inicial para detectar problemas de rentabilidad, caja,
+              costos, procesos, datos y control de gestión antes de invertir
+              tiempo o tecnología. Es el primer paso recomendado para ordenar
+              qué conviene resolver.
             </SectionLead>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               {outcomes.map((outcome) => (
@@ -46,13 +46,13 @@ export function Diagnosis360Section() {
               ))}
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CTAButton href={diagnosisHref}>Conocer Diagnóstico 360</CTAButton>
+              <CTAButton href={diagnosisHref}>Solicitar Diagnóstico 360</CTAButton>
               <CTAButton
                 href={diagnosisHref}
                 variant="secondary"
                 className="border-white/15 bg-white/10 text-white hover:bg-white hover:text-[#0D1B3D]"
               >
-                Solicitar diagnóstico
+                Ver cómo funciona
               </CTAButton>
             </div>
           </div>
@@ -66,7 +66,7 @@ export function Diagnosis360Section() {
                     Preview de evaluación
                   </p>
                   <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
-                    Score de gestión 360
+                    Lectura económico-operativa
                   </h3>
                 </div>
                 <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-[#7FF0E6]/30 bg-[#7FF0E6]/10 text-2xl font-semibold text-[#DFFCF8]">
@@ -80,10 +80,10 @@ export function Diagnosis360Section() {
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
-                  ["Gestión", "72%"],
-                  ["Procesos", "58%"],
-                  ["Datos", "64%"],
-                  ["Herramientas", "49%"],
+                  ["Caja", "72%"],
+                  ["Costos", "58%"],
+                  ["Procesos", "64%"],
+                  ["Datos", "49%"],
                 ].map(([label, value], index) => (
                   <div key={label} className="rounded-2xl border border-white/10 bg-white/8 px-4 py-3">
                     <div className="flex items-center justify-between gap-3">
@@ -110,7 +110,7 @@ export function Diagnosis360Section() {
                     Problemas detectados
                   </p>
                   <div className="mt-4 grid gap-2">
-                    {["Costos poco claros", "Datos aislados", "Seguimiento irregular"].map((item) => (
+                    {["Rentabilidad incierta", "Caja sin seguimiento", "Costos poco claros"].map((item) => (
                       <div key={item} className="flex items-center gap-2 text-sm font-semibold text-white/86">
                         <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#7FF0E6]" />
                         {item}
@@ -123,8 +123,8 @@ export function Diagnosis360Section() {
                     Próximos pasos
                   </p>
                   <p className="mt-3 text-sm font-semibold leading-7 text-white">
-                    Priorizar frentes críticos y definir qué ordenar, medir o
-                    construir primero.
+                    Priorizar qué ordenar, medir, automatizar o implementar
+                    primero según impacto en el negocio.
                   </p>
                   <ArrowRight aria-hidden="true" className="mt-4 h-5 w-5 text-[#7FF0E6]" />
                 </div>

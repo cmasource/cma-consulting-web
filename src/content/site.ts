@@ -1,7 +1,15 @@
-const publicEnv = (value: string | undefined, fallback: string) => {
+const publicEnv = (
+  value: string | undefined,
+  fallback: string,
+  invalidValues: string[] = [],
+) => {
   const normalized = value?.trim();
 
-  if (!normalized || /api\.example\.com|example\.com/i.test(normalized)) {
+  if (
+    !normalized ||
+    invalidValues.includes(normalized) ||
+    /api\.example\.com|example\.com/i.test(normalized)
+  ) {
     return fallback;
   }
 
@@ -11,13 +19,15 @@ const publicEnv = (value: string | undefined, fallback: string) => {
 export const siteConfig = {
   name: "CMA Consulting",
   sourceName: "cma_source",
-  tagline: "Consultoría empresarial, procesos y tecnología aplicada.",
-  headline: "Gestión, procesos y software para operar mejor.",
+  tagline: "Consultoría financiero-operativa y tecnológica para pymes.",
+  headline: "Ordená números, procesos y decisiones.",
   subtitle:
-    "CMA Consulting ayuda a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y aplicar tecnología con criterio operativo.",
+    "CMA Consulting ayuda a pymes a entender sus números, ordenar la gestión y mejorar decisiones con diagnóstico, control financiero, indicadores, procesos y tecnología aplicada.",
   strategicLine:
-    "Consultoría empresarial para ordenar, implementar y medir.",
-  diagnosisUrl: publicEnv(process.env.NEXT_PUBLIC_DIAGNOSTICO_360_URL, "#contacto"),
+    "Diagnóstico, control financiero, mejora operativa y tecnología aplicada.",
+  diagnosisUrl: publicEnv(process.env.NEXT_PUBLIC_DIAGNOSTICO_360_URL, "#contacto", [
+    "/diagnostico-360",
+  ]),
   contact: {
     email: publicEnv(
       process.env.NEXT_PUBLIC_CONTACT_EMAIL,
