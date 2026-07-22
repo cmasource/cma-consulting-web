@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { Badge, Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
+import { Eyebrow, SectionLead, SectionTitle } from "@/components/ui/Typography";
 import { siteConfig } from "@/content/site";
 
 const inquiryTypes = [
@@ -16,19 +16,6 @@ const inquiryTypes = [
   "Quiero implementar o mejorar un ERP/sistema de gestión.",
   "No sé exactamente qué necesito, quiero un diagnóstico.",
 ];
-
-const topics = [
-  "caja",
-  "costos",
-  "rentabilidad",
-  "procesos",
-  "indicadores",
-  "ventas",
-  "cobranzas",
-  "automatización",
-];
-
-const steps = ["Nos escribís", "Entendemos tu necesidad", "Definimos próximos pasos"];
 
 const inputClass =
   "mt-2 min-h-12 w-full rounded-[10px] border border-[#0D1B3D]/10 bg-white px-4 text-sm text-[#101828] outline-none transition placeholder:text-[#667085] focus:border-[#009A9A] focus:ring-4 focus:ring-[#009A9A]/10 dark:border-white/10 dark:bg-[#071225] dark:text-[#F8FAFC] dark:placeholder:text-[#CBD5E1]";
@@ -106,54 +93,21 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="section-shell bg-white dark:bg-[#071225]">
+    <section id="contacto" className="section-shell border-t border-[#0D1B3D]/10 bg-white dark:border-white/10 dark:bg-[#071225]">
       <div className="container-shell">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="lg:sticky lg:top-28">
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-16">
+          <div>
             <Eyebrow>Contacto</Eyebrow>
             <SectionTitle className="mt-4">Hablemos de tu empresa</SectionTitle>
             <SectionLead className="mt-5">
-              Contanos qué necesitás ordenar: números, caja, costos, procesos,
-              indicadores, ventas, cobranzas o herramientas. Empezamos por
-              entender el problema y definir próximos pasos concretos.
+              Contanos qué está pasando. La primera conversación sirve para
+              entender el problema y definir un próximo paso concreto.
             </SectionLead>
 
-            <div className="mt-8 rounded-[1.6rem] border border-[#0D1B3D]/10 bg-[#F8FAFC] p-5 shadow-xl shadow-[#0D1B3D]/8 dark:border-white/10 dark:bg-[#0F1B36]">
-              <Badge>Qué podés consultarnos</Badge>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {topics.map((topic) => (
-                  <span
-                    key={topic}
-                    className="rounded-full border border-[#0D1B3D]/10 bg-white px-3 py-1.5 text-xs font-semibold text-[#0D1B3D] dark:border-white/10 dark:bg-[#071225] dark:text-[#CBD5E1]"
-                  >
-                    {topic}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-5 rounded-[1.6rem] border border-[#009A9A]/20 bg-white p-5 dark:border-[#22C7C7]/25 dark:bg-[#0F1B36]">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#007A7A] dark:text-[#5EEAD4]">
-                Cómo sigue
-              </p>
-              <div className="mt-5 grid gap-3">
-                {steps.map((step, index) => (
-                  <div key={step} className="grid grid-cols-[auto_1fr] items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0D1B3D] font-mono text-xs font-bold text-white dark:bg-[#15234A]">
-                      {index + 1}
-                    </span>
-                    <p className="text-sm font-semibold text-[#0D1B3D] dark:text-[#F8FAFC]">
-                      {step}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-5 grid gap-3 text-sm text-[#475467] dark:text-[#CBD5E1] sm:grid-cols-2">
+            <div className="mt-9 grid gap-3 text-sm text-[#475467] dark:text-[#CBD5E1] sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-3 rounded-2xl border border-[#EA4335]/20 bg-white px-4 py-3 font-semibold text-[#0D1B3D] shadow-sm transition hover:-translate-y-0.5 hover:border-[#EA4335]/45 hover:shadow-lg hover:shadow-[#EA4335]/10 dark:border-white/10 dark:bg-[#0F1B36] dark:text-[#F8FAFC]"
+                className="flex min-h-12 items-center gap-3 border border-[#0D1B3D]/12 bg-white px-4 py-3 font-semibold text-[#0D1B3D] transition hover:border-[#EA4335]/45 dark:border-white/12 dark:bg-[#0F1B36] dark:text-[#F8FAFC]"
               >
                 <GmailMark />
                 Email
@@ -162,7 +116,7 @@ export function ContactSection() {
                 href={siteConfig.contact.whatsappUrl}
                 target={hasContactWhatsApp ? "_blank" : undefined}
                 rel={hasContactWhatsApp ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-3 rounded-2xl border border-[#25D366]/25 bg-[#25D366]/8 px-4 py-3 font-semibold text-[#0D1B3D] shadow-sm transition hover:-translate-y-0.5 hover:border-[#25D366]/55 hover:bg-[#25D366]/12 hover:shadow-lg hover:shadow-[#25D366]/10 dark:border-[#25D366]/35 dark:bg-[#25D366]/10 dark:text-[#F8FAFC]"
+                className="flex min-h-12 items-center gap-3 border border-[#25D366]/30 bg-[#25D366]/7 px-4 py-3 font-semibold text-[#0D1B3D] transition hover:border-[#25D366]/60 dark:border-[#25D366]/35 dark:bg-[#25D366]/10 dark:text-[#F8FAFC]"
               >
                 <WhatsAppMark />
                 WhatsApp
@@ -171,12 +125,10 @@ export function ContactSection() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-4 rounded-[2rem] bg-[#009A9A]/8 blur-2xl dark:bg-[#22C7C7]/8" />
             <form
               onSubmit={onSubmit}
-              className="surface-card relative overflow-hidden rounded-[1.8rem] p-5 md:p-8"
+              className="relative overflow-hidden border border-[#0D1B3D]/12 bg-[#F8FAFC] p-5 dark:border-white/12 dark:bg-[#0F1B36] md:p-8"
             >
-              <div className="premium-grid absolute inset-0 opacity-40" />
               <div className="relative">
                 <div className="mb-7 flex items-start justify-between gap-4">
                   <div>

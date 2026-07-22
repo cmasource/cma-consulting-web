@@ -20,12 +20,12 @@ export const siteConfig = {
   name: "CMA Consulting",
   sourceName: "cma_source",
   tagline: "Consultoría financiero-operativa y tecnológica para pymes.",
-  headline: "Ordená números, procesos y decisiones.",
+  headline: "Ordená tu empresa. Decidí con claridad.",
   subtitle:
-    "CMA Consulting ayuda a pymes a entender sus números, ordenar la gestión y mejorar decisiones con diagnóstico, control financiero, indicadores, procesos y tecnología aplicada.",
+    "Finanzas, procesos y tecnología aplicada para convertir información dispersa en decisiones concretas.",
   strategicLine:
     "Diagnóstico, control financiero, mejora operativa y tecnología aplicada.",
-  diagnosisUrl: publicEnv(process.env.NEXT_PUBLIC_DIAGNOSTICO_360_URL, "#contacto", [
+  diagnosisUrl: publicEnv(process.env.NEXT_PUBLIC_DIAGNOSTICO_360_URL, "https://cma-diagnostico-360.vercel.app/", [
     "/diagnostico-360",
   ]),
   contact: {
@@ -51,8 +51,7 @@ export const navItems = [
   { label: "Inicio", href: "#inicio" },
   { label: "Transformación", href: "#transformacion" },
   { label: "Diagnóstico 360", href: "#diagnostico-360" },
-  { label: "Soluciones", href: "#soluciones" },
-  { label: "Aplicaciones", href: "#portfolio" },
+  { label: "Casos", href: "#portfolio" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Contacto", href: "#contacto" },
 ];

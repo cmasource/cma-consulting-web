@@ -50,15 +50,26 @@ export function AboutSection() {
 function LinkedInProfileCard() {
   return (
     <article className="relative overflow-hidden rounded-[1.7rem] border border-[#0A66C2]/16 bg-white shadow-2xl shadow-[#0D1B3D]/10 dark:border-[#0A66C2]/24 dark:bg-[#0F1B36]">
-      <div className="relative h-28 overflow-hidden bg-[#1D405D] md:h-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_36%,rgba(127,240,230,0.24),transparent_18rem),linear-gradient(135deg,#244761,#102238)]" />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-35 [background-image:linear-gradient(120deg,transparent_0_18px,rgba(255,255,255,0.18)_19px,transparent_20px),linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] [background-size:96px_96px,42px_42px,42px_42px]"
+      <div className="relative h-32 overflow-hidden bg-[#0D1B3D] md:h-36">
+        <div className="absolute inset-y-0 left-0 w-[42%] bg-[#009A9A]" />
+        <div className="absolute -left-8 -top-16 h-56 w-56 rotate-12 border-[28px] border-white/10" />
+        <Image
+          src="/brand/cma-monogram-transparent.png"
+          alt=""
+          width={180}
+          height={120}
+          className="absolute left-10 top-1/2 h-20 w-auto -translate-y-1/2 object-contain opacity-95"
         />
-        <span className="absolute right-5 top-5 rounded-full border border-white/18 bg-white/10 px-3 py-1 font-mono text-[0.64rem] font-bold uppercase tracking-[0.16em] text-white/86">
-          LinkedIn
-        </span>
+        <svg aria-hidden="true" className="absolute inset-y-0 right-0 h-full w-[64%]" viewBox="0 0 520 150" fill="none" preserveAspectRatio="none">
+          <path d="M0 118C72 110 108 124 168 92C216 67 252 82 302 55C360 23 410 44 520 12" stroke="rgba(127,240,230,0.72)" strokeWidth="2" />
+          <path d="M0 132H520M80 0V150M200 0V150M320 0V150M440 0V150" stroke="rgba(255,255,255,0.09)" />
+          {[168, 302, 430].map((cx, index) => (
+            <circle key={cx} cx={cx} cy={[92, 55, 37][index]} r="4" fill="#7FF0E6" />
+          ))}
+        </svg>
+        <p className="absolute bottom-5 right-5 hidden font-mono text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-white/62 sm:block">
+          Gestión · datos · decisiones
+        </p>
       </div>
 
       <div className="relative px-5 pb-5 pt-0">

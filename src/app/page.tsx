@@ -7,7 +7,6 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { Diagnosis360Section } from "@/components/sections/Diagnosis360Section";
 import { HeroEditorial } from "@/components/sections/HeroEditorial";
 import { OperationalManifestoSection } from "@/components/sections/OperationalManifestoSection";
-import { SolutionsUnifiedSection } from "@/components/sections/SolutionsUnifiedSection";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <HeroEditorial />
         <OperationalManifestoSection />
         <Diagnosis360Section />
-        <SolutionsUnifiedSection />
         <CasesLabsSection />
         <AboutSection />
         <ContactSection />

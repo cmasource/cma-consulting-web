@@ -12,46 +12,16 @@ const projectCards = [
     ...portfolioItems[0],
     description:
       "Web inmobiliaria para centralizar propiedades, consultas y gestión comercial.",
-    caseHighlights: [
-      {
-        label: "Problema",
-        text: "Publicación dispersa y baja autonomía para mostrar propiedades.",
-      },
-      {
-        label: "Solución",
-        text: "Catálogo, fichas, panel de carga, filtros y WhatsApp.",
-      },
-      {
-        label: "Valor",
-        text: "Oferta centralizada y gestión comercial más clara.",
-      },
-    ],
     href: "https://victor-abadie-web.vercel.app/",
     accentColor: "emerald" as const,
-    previewKind: "real-estate" as const,
     previewImage: "/portfolio/victor-abadie-preview.png",
   },
   {
     ...portfolioItems[1],
     description:
       "Dashboard financiero para leer mercados, activos e información clave en un solo lugar.",
-    caseHighlights: [
-      {
-        label: "Problema",
-        text: "Información financiera dispersa y lectura manual.",
-      },
-      {
-        label: "Solución",
-        text: "Panel con activos, búsqueda, reportes y contexto de mercado.",
-      },
-      {
-        label: "Valor",
-        text: "Decisiones con datos y seguimiento más ordenado.",
-      },
-    ],
     href: "https://market-intelligence-dashboard-pi.vercel.app/",
     accentColor: "cyan" as const,
-    previewKind: "market" as const,
     previewImage: "/portfolio/market-intelligence-preview.png",
   },
   {
@@ -60,24 +30,9 @@ const projectCards = [
     status: "Caso aplicado",
     description:
       "Ecommerce para presentar producto, variantes, compra y experiencia comercial.",
-    caseHighlights: [
-      {
-        label: "Problema",
-        text: "Necesidad de vender y mostrar producto físico de forma clara.",
-      },
-      {
-        label: "Solución",
-        text: "Ficha de producto, carrito, variantes y checkout.",
-      },
-      {
-        label: "Valor",
-        text: "Canal digital preparado para conversión.",
-      },
-    ],
     tags: ["Ecommerce", "Producto", "Checkout", "Retail"],
     href: "https://hydria-web.vercel.app/",
     accentColor: "hydria" as const,
-    previewKind: "hydria" as const,
     previewImage: "/portfolio/hydria-preview.png",
   },
   {
@@ -86,44 +41,29 @@ const projectCards = [
     status: "En desarrollo",
     description:
       "Herramienta propia para leer gestión, detectar problemas y priorizar mejoras.",
-    caseHighlights: [
-      {
-        label: "Problema",
-        text: "Dificultad para saber por dónde empezar.",
-      },
-      {
-        label: "Solución",
-        text: "Score, frentes críticos y próximos pasos.",
-      },
-      {
-        label: "Valor",
-        text: "Primera lectura clara para definir acciones.",
-      },
-    ],
     tags: ["Diagnóstico", "Gestión", "SaaS", "Prioridades"],
     href: siteConfig.diagnosisUrl,
     accentColor: "teal" as const,
-    previewKind: "diagnosis" as const,
     previewImage: "/portfolio/diagnostico-360-preview.png",
   },
 ];
 
 export function CasesLabsSection() {
   return (
-    <section id="portfolio" className="section-shell bg-white dark:bg-[#071225]">
+    <section id="portfolio" className="section-shell bg-[#F8FAFC] dark:bg-[#071225]">
       <div className="container-shell">
-        <div className="grid gap-8 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
+        <div className="grid gap-6 border-b border-[#0D1B3D]/12 pb-8 dark:border-white/12 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
           <div>
             <Eyebrow>Aplicaciones reales</Eyebrow>
             <SectionTitle className="mt-4">Aplicaciones reales</SectionTitle>
           </div>
           <SectionLead>
-            Proyectos y herramientas que muestran cómo CMA pasa de la idea a la
-            implementación.
+            Proyectos concretos en los que negocio, diseño y tecnología se
+            convierten en una herramienta que ya se puede usar.
           </SectionLead>
         </div>
 
-        <div className="mt-11 grid gap-6 xl:grid-cols-2">
+        <div className="mt-9 grid gap-6 lg:grid-cols-2">
           {projectCards.map((item) => (
             <ProjectPreviewCard
               key={item.title}
@@ -135,8 +75,6 @@ export function CasesLabsSection() {
               accentColor={item.accentColor}
               previewImage={item.previewImage}
               status={item.status}
-              previewKind={item.previewKind}
-              caseHighlights={item.caseHighlights}
             />
           ))}
         </div>

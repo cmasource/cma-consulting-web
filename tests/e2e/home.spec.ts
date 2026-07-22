@@ -6,7 +6,7 @@ test.describe("CMA Consulting landing", () => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Ordená números, procesos y decisiones.",
+      "Ordená tu empresa. Decidí con claridad.",
     );
 
     const headerLogos = page.getByRole("banner").getByAltText("CMA Consulting");
@@ -14,14 +14,12 @@ test.describe("CMA Consulting landing", () => {
     await expect(headerLogos.first()).toBeVisible();
 
     await expect(
-      page.getByRole("link", { name: /Solicitar Diagnóstico 360/i }).first(),
+      page.getByRole("link", { name: /Empezar con Diagnóstico 360/i }),
     ).toBeVisible();
-    await expect(page.getByRole("link", { name: /Ver cómo trabajamos/i })).toBeVisible();
 
     for (const section of [
       "Del desorden financiero-operativo al sistema de gestión.",
-      "Empezá con un diagnóstico claro.",
-      "Qué puede contratar una pyme",
+      "Empezá con una lectura clara del negocio.",
       "Aplicaciones reales",
       "Gestión, finanzas y tecnología aplicada para pymes",
       "Hablemos de tu empresa",
@@ -38,6 +36,8 @@ test.describe("CMA Consulting landing", () => {
     expect(bodyText).not.toContain("CMA_Source");
     expect(bodyText).not.toContain("cma source");
     expect(bodyText).not.toContain("cmQuantBot");
+    expect(bodyText).not.toContain("Qué puede contratar una pyme");
+    expect(bodyText).not.toContain("Qué hacemos y qué no hacemos");
     await expect(page.locator("form")).toBeVisible();
   });
 
@@ -75,12 +75,17 @@ test.describe("CMA Consulting landing", () => {
   test("primary diagnosis CTAs are visible", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
 
-    const diagnosisLinks = page.getByRole("link", {
-      name: /Solicitar diagnóstico/i,
-    });
-
-    await expect(diagnosisLinks.first()).toBeVisible();
-    await expect(diagnosisLinks.nth(1)).toBeVisible();
+    if ((page.viewportSize()?.width ?? 0) >= 1024) {
+      await expect(
+        page.getByRole("banner").getByRole("link", { name: /Solicitar diagnóstico/i }),
+      ).toBeVisible();
+    }
+    await expect(
+      page.getByRole("link", { name: /Empezar con Diagnóstico 360/i }),
+    ).toHaveAttribute("href", "https://cma-diagnostico-360.vercel.app/");
+    await expect(
+      page.getByRole("link", { name: /Ir a Diagnóstico 360/i }),
+    ).toHaveAttribute("href", "https://cma-diagnostico-360.vercel.app/");
   });
 
   test("theme toggle switches between light and dark mode", async ({ page }) => {

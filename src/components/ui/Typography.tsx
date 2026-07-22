@@ -23,7 +23,7 @@ export function SectionTitle({ children, className }: TextProps) {
   return (
     <h2
       className={cn(
-        "text-balance text-3xl font-semibold leading-[1.04] tracking-[-0.015em] text-[#0D1B3D] dark:text-[#F8FAFC] md:text-5xl",
+        "font-display text-balance text-4xl font-medium leading-[1.02] tracking-[-0.015em] text-[#0D1B3D] dark:text-[#F8FAFC] md:text-[3.5rem]",
         className,
       )}
     >

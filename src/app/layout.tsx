@@ -1,36 +1,42 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Manrope, Newsreader } from "next/font/google";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["500", "600"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+  title: "CMA Consulting | Consultoría financiero-operativa para pymes",
   description:
-    "Ayudamos a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y construir soluciones digitales a medida. Consultoría empresarial, software, automatización y datos.",
+    "Ayudamos a pymes a ordenar números, procesos y decisiones con diagnóstico, control financiero y tecnología aplicada.",
   openGraph: {
-    title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+    title: "CMA Consulting | Consultoría financiero-operativa para pymes",
     description:
-      "Ayudamos a PyMEs, comercios, profesionales e industrias a ordenar su gestión, mejorar procesos y construir soluciones digitales a medida.",
+      "Ordenamos números, procesos y decisiones con diagnóstico, control financiero y tecnología aplicada.",
     type: "website",
     locale: "es_AR",
     siteName: "CMA Consulting",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CMA Consulting | Consultoría empresarial, procesos y tecnología aplicada",
+    title: "CMA Consulting | Consultoría financiero-operativa para pymes",
     description:
-      "Consultoría empresarial, software, automatización y datos para PyMEs, comercios, profesionales e industrias.",
+      "Diagnóstico, control financiero y tecnología aplicada para pymes.",
   },
   icons: {
     icon: [
@@ -52,7 +58,7 @@ export default function RootLayout({
     <html
       lang="es"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${manrope.variable} ${newsreader.variable} ${plexMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-[#F8FAFC] text-[#101828] dark:bg-[#071225] dark:text-[#F8FAFC]">
         <ThemeProvider>{children}</ThemeProvider>

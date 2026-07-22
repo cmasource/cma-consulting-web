@@ -1,70 +1,52 @@
-import { CTAButton } from "@/components/ui/CTAButton";
-import { Eyebrow } from "@/components/ui/Typography";
-import { HeroImpactPanel } from "@/components/visuals/HeroImpactPanel";
+import { ArrowDownRight } from "lucide-react";
+import { HeroSignalField } from "@/components/visuals/HeroSignalField";
 import { siteConfig } from "@/content/site";
-
-const valuePills = [
-  "Costos claros",
-  "Caja ordenada",
-  "Procesos medibles",
-  "Decisiones con datos",
-];
 
 export function HeroEditorial() {
   return (
     <section
       id="inicio"
-      className="editorial-band relative overflow-hidden border-b border-[#0D1B3D]/10 bg-[#F8FAFC] pb-16 pt-12 dark:border-white/10 dark:bg-[#071225] lg:pb-[5.5rem] lg:pt-[4.5rem]"
+      className="relative isolate flex min-h-[calc(100svh-68px)] overflow-hidden bg-[#071225] text-white"
     >
-      <div className="premium-grid absolute inset-0 opacity-80" />
-      <div className="ambient-scan scroll-ambient absolute left-1/2 top-[-22rem] h-[48rem] w-[72rem] -translate-x-1/2 rounded-full blur-3xl" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent dark:from-[#071225]" />
+      <HeroSignalField />
 
-      <div className="container-shell relative">
-        <div className="grid items-center gap-9 lg:min-h-[610px] lg:grid-cols-[minmax(0,0.9fr)_minmax(500px,1.1fr)] lg:gap-11 xl:gap-14">
-          <div className="chapter-reveal max-w-3xl lg:pr-4">
-            <Eyebrow className="mb-5 w-fit rounded-full border border-[#009A9A]/20 bg-white/80 px-4 py-2 shadow-sm backdrop-blur dark:border-[#22C7C7]/30 dark:bg-[#0F1B36]/80">
-              Consultoría financiero-operativa + tecnología aplicada
-            </Eyebrow>
-            <h1 className="text-balance text-4xl font-semibold leading-[1.03] tracking-[-0.032em] text-[#0D1B3D] dark:text-[#F8FAFC] sm:text-5xl lg:text-[3.75rem] xl:text-[4.65rem]">
-              {siteConfig.headline}
-            </h1>
-            <p className="mt-5 max-w-[42rem] text-base leading-8 text-[#475467] dark:text-[#CBD5E1] md:text-lg">
-              {siteConfig.subtitle}
-            </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <CTAButton
-                href={siteConfig.diagnosisUrl}
-                className="rounded-[10px] px-6 shadow-xl shadow-[#0D1B3D]/18"
-              >
-                Solicitar Diagnóstico 360
-              </CTAButton>
-              <CTAButton
-                href="#transformacion"
-                variant="ghost"
-                className="rounded-[10px] px-1 text-[#475467] hover:bg-transparent dark:text-[#CBD5E1]"
-              >
-                Ver cómo trabajamos
-              </CTAButton>
-            </div>
+      <div className="container-shell relative z-10 flex w-full items-center py-16 sm:py-20 lg:py-24">
+        <div className="max-w-[58rem]">
+          <p className="hero-reveal font-mono text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#7FF0E6] sm:text-xs">
+            Consultoría financiero-operativa para pymes
+          </p>
+          <h1 className="hero-reveal hero-reveal-delay mt-6 max-w-[54rem] font-display text-[3.5rem] font-medium leading-[0.96] tracking-[-0.025em] text-white sm:text-[4.8rem] lg:text-[6.5rem]">
+            Ordená tu empresa. Decidí con claridad.
+          </h1>
+          <p className="hero-reveal hero-reveal-delay-2 mt-7 max-w-[39rem] text-base leading-8 text-white/72 sm:text-lg">
+            Finanzas, procesos y tecnología aplicada para convertir información
+            dispersa en decisiones concretas.
+          </p>
 
-            <div className="mt-6 grid max-w-2xl gap-2 sm:grid-cols-2">
-              {valuePills.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-2xl border border-[#0D1B3D]/10 bg-white/78 px-4 py-3 text-sm font-semibold text-[#0D1B3D] shadow-sm backdrop-blur dark:border-white/10 dark:bg-[#0F1B36]/75 dark:text-[#F8FAFC]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="chapter-reveal relative">
-            <HeroImpactPanel />
+          <div className="hero-reveal hero-reveal-delay-3 mt-9">
+            <a
+              href={siteConfig.diagnosisUrl}
+              className="group inline-flex min-h-12 items-center gap-3 rounded-sm bg-[#5EEAD4] px-6 text-sm font-bold !text-[#071225] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5EEAD4]"
+            >
+              Empezar con Diagnóstico 360
+              <ArrowDownRight
+                aria-hidden="true"
+                className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+              />
+            </a>
           </div>
         </div>
       </div>
+
+      <a
+        href="#transformacion"
+        className="absolute bottom-7 right-[max(20px,calc((100vw-1440px)/2))] z-10 hidden items-center gap-3 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/55 transition hover:text-white md:flex"
+      >
+        Ver transformación
+        <span className="flex h-9 w-9 items-center justify-center border border-white/18">
+          <ArrowDownRight aria-hidden="true" className="h-4 w-4" />
+        </span>
+      </a>
     </section>
   );
 }

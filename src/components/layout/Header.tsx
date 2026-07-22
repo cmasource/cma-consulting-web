@@ -10,10 +10,15 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 border-b border-[#0D1B3D]/10 bg-white/[0.92] backdrop-blur-xl dark:border-white/10 dark:bg-[#071225]/[0.92]">
-      <div className="container-shell flex min-h-[72px] items-center justify-between gap-5">
+    <header className="sticky inset-x-0 top-0 z-50 border-b border-white/10 bg-[#071225]/[0.96] text-white backdrop-blur-xl">
+      <div className="container-shell flex min-h-[68px] items-center justify-between gap-5">
         <a href="#inicio" aria-label="Ir al inicio" className="shrink-0">
-          <BrandLogo variant="consulting" context="auto" priority />
+          <BrandLogo
+            variant="consulting"
+            context="light"
+            priority
+            className="[&_img]:brightness-0 [&_img]:invert"
+          />
         </a>
 
         <nav
@@ -24,7 +29,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-[#344054] transition hover:text-[#007A7A] dark:text-[#CBD5E1] dark:hover:text-[#5EEAD4]"
+              className="text-sm font-semibold text-white/72 transition hover:text-white"
             >
               {item.label}
             </a>
@@ -32,10 +37,10 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ThemeToggle />
+          <ThemeToggle className="rounded-sm border-white/15 bg-white/8 text-white hover:border-[#5EEAD4]/50 hover:text-[#5EEAD4] dark:bg-white/8" />
           <a
             href={siteConfig.diagnosisUrl}
-            className="inline-flex min-h-11 items-center rounded-md bg-[#0D1B3D] px-5 text-sm font-semibold !text-white shadow-sm shadow-[#0D1B3D]/15 transition hover:-translate-y-0.5 hover:bg-[#009A9A] hover:!text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A]"
+            className="inline-flex min-h-10 items-center rounded-sm bg-[#5EEAD4] px-5 text-sm font-bold !text-[#071225] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5EEAD4]"
           >
             Solicitar diagnóstico
           </a>
@@ -43,7 +48,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-[#0D1B3D]/10 text-[#0D1B3D] transition hover:border-[#009A9A]/40 hover:text-[#007A7A] dark:border-white/15 dark:text-[#F8FAFC] dark:hover:text-[#5EEAD4] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-white/16 text-white transition hover:border-[#5EEAD4]/50 hover:text-[#5EEAD4] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -77,23 +82,23 @@ export function Header() {
         id="mobile-menu"
         hidden={!open}
         className={cn(
-          "grid border-t border-[#0D1B3D]/10 bg-white transition-all dark:border-white/10 dark:bg-[#071225] lg:hidden",
+          "grid border-t border-white/10 bg-[#071225] transition-all lg:hidden",
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >
         <nav className="overflow-hidden" aria-label="Menú mobile">
-          <div className="container-shell grid max-h-[calc(100svh-72px)] gap-1 overflow-y-auto py-4">
-            <div className="mb-1 flex items-center justify-between rounded-md border border-[#0D1B3D]/10 px-3 py-2 dark:border-white/10">
-              <span className="text-sm font-semibold text-[#344054] dark:text-[#CBD5E1]">
+          <div className="container-shell grid max-h-[calc(100svh-68px)] gap-1 overflow-y-auto py-4">
+            <div className="mb-1 flex items-center justify-between border border-white/10 px-3 py-2">
+              <span className="text-sm font-semibold text-white/72">
                 Apariencia
               </span>
-              <ThemeToggle />
+              <ThemeToggle className="rounded-sm border-white/15 bg-white/8 text-white" />
             </div>
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-3 text-sm font-semibold text-[#344054] hover:bg-[#F8FAFC] hover:text-[#007A7A] dark:text-[#CBD5E1] dark:hover:bg-[#0F1B36] dark:hover:text-[#5EEAD4]"
+                className="rounded-sm px-3 py-3 text-sm font-semibold text-white/72 hover:bg-white/5 hover:text-white"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -101,7 +106,7 @@ export function Header() {
             ))}
             <a
               href={siteConfig.diagnosisUrl}
-              className="mt-2 rounded-md bg-[#0D1B3D] px-3 py-3 text-center text-sm font-semibold !text-white"
+              className="mt-2 rounded-sm bg-[#5EEAD4] px-3 py-3 text-center text-sm font-bold !text-[#071225]"
               onClick={() => setOpen(false)}
             >
               Solicitar diagnóstico
