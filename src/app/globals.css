@@ -132,6 +132,20 @@ a {
   animation: hero-field-sweep 12s ease-in-out infinite;
 }
 
+.hero-system-flow {
+  stroke-dasharray: 18 18;
+  animation: hero-system-flow 20s linear infinite;
+}
+
+.hero-system-core {
+  transform-origin: 1188px 426px;
+  animation: hero-system-core 7.5s ease-in-out infinite;
+}
+
+.hero-metric-card {
+  animation: hero-metric-card 8s ease-in-out infinite;
+}
+
 @keyframes hero-reveal {
   from {
     transform: translateY(24px);
@@ -166,6 +180,36 @@ a {
   50% {
     transform: translateX(220%);
     opacity: 0.7;
+  }
+}
+
+@keyframes hero-system-flow {
+  to {
+    stroke-dashoffset: -220;
+  }
+}
+
+@keyframes hero-system-core {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.018);
+  }
+}
+
+@keyframes hero-metric-card {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-5px);
   }
 }
 

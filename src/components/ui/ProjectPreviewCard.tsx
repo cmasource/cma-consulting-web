@@ -8,7 +8,7 @@ type ProjectPreviewCardProps = {
   description: string;
   tags: string[];
   href?: string;
-  accentColor: "emerald" | "cyan" | "hydria" | "teal";
+  accentColor: "emerald" | "cyan" | "hydria" | "teal" | "portfolio";
   previewImage?: string;
   status: string;
 };
@@ -38,6 +38,12 @@ const accents = {
     surface: "bg-[#ECF7F6] dark:bg-[#071D2C]",
     address: "cma-diagnostico-360.vercel.app",
   },
+  portfolio: {
+    line: "bg-[#0D5C63]",
+    text: "text-[#0D5C63] dark:text-[#8BE7E2]",
+    surface: "bg-[#F3F0E8] dark:bg-[#081B24]",
+    address: "cma-portfolio.vercel.app",
+  },
 };
 
 export function ProjectPreviewCard({
@@ -52,11 +58,18 @@ export function ProjectPreviewCard({
 }: ProjectPreviewCardProps) {
   const accent = accents[accentColor];
   const isExternalHref = href?.startsWith("http");
+  const PreviewElement = href ? "a" : "div";
 
   return (
     <article className="group overflow-hidden border border-[#0D1B3D]/12 bg-white transition duration-300 hover:border-[#0D1B3D]/24 dark:border-white/12 dark:bg-[#071225] dark:hover:border-white/24">
       <div className="p-3 sm:p-4">
-        <div className="overflow-hidden border border-[#0D1B3D]/10 bg-white shadow-[0_18px_44px_rgba(13,27,61,0.12)] dark:border-white/10 dark:bg-[#071225]">
+        <PreviewElement
+          href={href}
+          target={isExternalHref ? "_blank" : undefined}
+          rel={isExternalHref ? "noopener noreferrer" : undefined}
+          aria-label={href ? `Abrir proyecto ${title}` : undefined}
+          className="block overflow-hidden border border-[#0D1B3D]/10 bg-white shadow-[0_18px_44px_rgba(13,27,61,0.12)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#0D1B3D]/18 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A] dark:border-white/10 dark:bg-[#071225] dark:group-hover:border-white/18"
+        >
           <div className="flex h-10 items-center gap-3 border-b border-[#0D1B3D]/10 bg-[#F8FAFC] px-3 dark:border-white/10 dark:bg-[#0F1B36]">
             <div className="flex gap-1.5" aria-hidden="true">
               <span className="h-2.5 w-2.5 rounded-full bg-[#E45F5F]" />
@@ -72,20 +85,28 @@ export function ProjectPreviewCard({
 
           <div className={cn("relative aspect-[16/9] overflow-hidden", accent.surface)}>
             {previewImage ? (
-              <Image
-                src={previewImage}
-                alt={`Vista previa de ${title}`}
-                fill
-                sizes="(max-width: 768px) 92vw, (max-width: 1280px) 44vw, 620px"
-                className="object-cover object-top transition duration-700 group-hover:scale-[1.015]"
-              />
+              <>
+                <Image
+                  src={previewImage}
+                  alt={`Vista previa de ${title}`}
+                  fill
+                  sizes="(max-width: 768px) 92vw, (max-width: 1280px) 44vw, 620px"
+                  className="object-cover object-top transition duration-700 group-hover:scale-[1.015]"
+                />
+                {href ? (
+                  <span className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-sm bg-white/92 px-3 py-2 text-xs font-bold text-[#0D1B3D] opacity-0 shadow-lg shadow-[#0D1B3D]/16 backdrop-blur transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-[#071225]/88 dark:text-white">
+                    Ver proyecto
+                    <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+                  </span>
+                ) : null}
+              </>
             ) : (
               <div className="absolute inset-0 grid place-items-center">
                 <span className={cn("h-16 w-16 border", accent.text)} />
               </div>
             )}
           </div>
-        </div>
+        </PreviewElement>
       </div>
 
       <div className="grid gap-5 border-t border-[#0D1B3D]/10 p-5 dark:border-white/10 sm:p-6 md:grid-cols-[1fr_auto] md:items-end">

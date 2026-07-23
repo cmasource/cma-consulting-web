@@ -1,0 +1,4 @@
+.superdesign
+scripts/generate-superdesign-init.mjs
+playwright-report
+test-results

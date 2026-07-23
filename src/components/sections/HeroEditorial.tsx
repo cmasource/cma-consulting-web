@@ -12,10 +12,7 @@ export function HeroEditorial() {
 
       <div className="container-shell relative z-10 flex w-full items-center py-16 sm:py-20 lg:py-24">
         <div className="max-w-[58rem]">
-          <p className="hero-reveal font-mono text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#7FF0E6] sm:text-xs">
-            Consultoría financiero-operativa para pymes
-          </p>
-          <h1 className="hero-reveal hero-reveal-delay mt-6 max-w-[54rem] font-display text-[3.5rem] font-medium leading-[0.96] tracking-[-0.025em] text-white sm:text-[4.8rem] lg:text-[6.5rem]">
+          <h1 className="hero-reveal max-w-[54rem] font-display text-[3.5rem] font-medium leading-[0.96] tracking-[-0.025em] text-white sm:text-[4.8rem] lg:text-[6.5rem]">
             Ordená tu empresa. Decidí con claridad.
           </h1>
           <p className="hero-reveal hero-reveal-delay-2 mt-7 max-w-[39rem] text-base leading-8 text-white/72 sm:text-lg">

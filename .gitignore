@@ -38,6 +38,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Superdesign temporary draft artifacts
+/.superdesign/tmp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

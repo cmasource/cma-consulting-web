@@ -1,11 +1,9 @@
 import { portfolioItems } from "@/content/portfolio";
 import {
-  Eyebrow,
   SectionLead,
   SectionTitle,
 } from "@/components/ui/Typography";
 import { ProjectPreviewCard } from "@/components/ui/ProjectPreviewCard";
-import { siteConfig } from "@/content/site";
 
 const projectCards = [
   {
@@ -36,15 +34,15 @@ const projectCards = [
     previewImage: "/portfolio/hydria-preview.png",
   },
   {
-    title: "Diagnóstico 360",
-    type: "Herramienta de evaluación",
-    status: "En desarrollo",
+    title: "CMA Portfolio",
+    type: "Herramienta financiera + propuesta de cartera",
+    status: "Producto aplicado",
     description:
-      "Herramienta propia para leer gestión, detectar problemas y priorizar mejoras.",
-    tags: ["Diagnóstico", "Gestión", "SaaS", "Prioridades"],
-    href: siteConfig.diagnosisUrl,
-    accentColor: "teal" as const,
-    previewImage: "/portfolio/diagnostico-360-preview.png",
+      "Experiencia financiera para ordenar capital, perfil de riesgo y propuesta inicial.",
+    tags: ["Portfolio", "Finanzas", "Riesgo", "Argentina"],
+    href: "https://cma-portfolio.vercel.app/",
+    accentColor: "portfolio" as const,
+    previewImage: "/portfolio/cma-portfolio-preview.png",
   },
 ];
 
@@ -54,8 +52,7 @@ export function CasesLabsSection() {
       <div className="container-shell">
         <div className="grid gap-6 border-b border-[#0D1B3D]/12 pb-8 dark:border-white/12 lg:grid-cols-[0.42fr_0.58fr] lg:items-end">
           <div>
-            <Eyebrow>Aplicaciones reales</Eyebrow>
-            <SectionTitle className="mt-4">Aplicaciones reales</SectionTitle>
+            <SectionTitle>Aplicaciones reales</SectionTitle>
           </div>
           <SectionLead>
             Proyectos concretos en los que negocio, diseño y tecnología se

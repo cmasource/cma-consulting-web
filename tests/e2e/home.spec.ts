@@ -21,7 +21,7 @@ test.describe("CMA Consulting landing", () => {
       "Del desorden financiero-operativo al sistema de gestión.",
       "Empezá con una lectura clara del negocio.",
       "Aplicaciones reales",
-      "Gestión, finanzas y tecnología aplicada para pymes",
+      "Criterio de negocio, ejecución técnica.",
       "Hablemos de tu empresa",
     ]) {
       await expect(page.getByRole("heading", { name: section })).toBeVisible();
