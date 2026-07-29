@@ -8,7 +8,7 @@ export const portfolioItems = [
     tags: ["Web", "Real Estate", "Panel Admin", "SEO", "Analytics"],
   },
   {
-    title: "CMA Market Intelligence",
+    title: "CMA Markets",
     type: "Producto interno en desarrollo",
     status: "Laboratorio",
     description:
