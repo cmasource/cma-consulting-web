@@ -20,10 +20,21 @@ const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
 });
 
+const ogImage = {
+  url: "/brand/cma-consulting-header.png",
+  width: 622,
+  height: 144,
+  alt: "CMA Consulting",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cma-consulting.vercel.app"),
   title: "CMA Consulting | Consultoría financiero-operativa para pymes",
   description:
     "Ayudamos a pymes a ordenar números, procesos y decisiones con diagnóstico, control financiero y tecnología aplicada.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "CMA Consulting | Consultoría financiero-operativa para pymes",
     description:
@@ -31,12 +42,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     siteName: "CMA Consulting",
+    url: "/",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "CMA Consulting | Consultoría financiero-operativa para pymes",
     description:
       "Diagnóstico, control financiero y tecnología aplicada para pymes.",
+    images: [ogImage.url],
   },
   icons: {
     icon: [
