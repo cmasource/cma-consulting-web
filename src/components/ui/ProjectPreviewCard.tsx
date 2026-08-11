@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { BrowserChrome } from "@/components/ui/BrowserChrome";
 import { cn } from "@/lib/utils";
 
 type ProjectPreviewCardProps = {
@@ -70,18 +71,7 @@ export function ProjectPreviewCard({
           aria-label={href ? `Abrir proyecto ${title}` : undefined}
           className="block overflow-hidden border border-[#0D1B3D]/10 bg-white shadow-[0_18px_44px_rgba(13,27,61,0.12)] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#0D1B3D]/18 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A] dark:border-white/10 dark:bg-[#071225] dark:group-hover:border-white/18"
         >
-          <div className="flex h-10 items-center gap-3 border-b border-[#0D1B3D]/10 bg-[#F8FAFC] px-3 dark:border-white/10 dark:bg-[#0F1B36]">
-            <div className="flex gap-1.5" aria-hidden="true">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#E45F5F]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#D8AA3B]" />
-              <span className={cn("h-2.5 w-2.5 rounded-full", accent.line)} />
-            </div>
-            <div className="min-w-0 flex-1 border border-[#0D1B3D]/8 bg-white px-3 py-1 dark:border-white/8 dark:bg-white/5">
-              <p className="truncate font-mono text-[0.58rem] font-semibold text-[#667085] dark:text-[#CBD5E1]">
-                {accent.address}
-              </p>
-            </div>
-          </div>
+          <BrowserChrome address={accent.address} accentDotClassName={accent.line} compact />
 
           <div className={cn("relative aspect-[16/9] overflow-hidden", accent.surface)}>
             {previewImage ? (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { BrowserChrome } from "@/components/ui/BrowserChrome";
 import { Eyebrow, SectionTitle } from "@/components/ui/Typography";
 import { siteConfig } from "@/content/site";
 
@@ -39,18 +40,7 @@ export function Diagnosis360Section() {
               aria-label="Abrir CMA Diagnóstico 360"
               className="group block overflow-hidden border border-[#0D1B3D]/12 bg-white shadow-[0_28px_70px_rgba(13,27,61,0.16)] transition duration-300 hover:-translate-y-1 hover:border-[#007A7A]/40 hover:shadow-[0_34px_82px_rgba(13,27,61,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007A7A] dark:border-white/12 dark:bg-[#071225] dark:hover:border-[#5EEAD4]/40"
             >
-              <div className="flex h-11 items-center gap-3 border-b border-[#0D1B3D]/10 bg-[#F8FAFC] px-4 dark:border-white/10 dark:bg-[#0F1B36]">
-                <div className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#E45F5F]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#D8AA3B]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#3BAA7A]" />
-                </div>
-                <div className="min-w-0 flex-1 border border-[#0D1B3D]/8 bg-white px-3 py-1.5 dark:border-white/8 dark:bg-white/5">
-                  <p className="truncate font-mono text-[0.62rem] font-semibold text-[#667085] dark:text-[#CBD5E1]">
-                    cma-diagnostico-360.vercel.app
-                  </p>
-                </div>
-              </div>
+              <BrowserChrome address="cma-diagnostico-360.vercel.app" />
               <div className="relative aspect-[16/9] overflow-hidden bg-[#071225]">
                 <Image
                   src="/portfolio/diagnostico-360-landing-preview.png"
