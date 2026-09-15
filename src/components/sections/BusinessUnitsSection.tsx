@@ -1,7 +1,7 @@
 import { ArrowDown, Blocks, Cpu } from "lucide-react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { businessUnits } from "@/content/site";
+import { businessUnits, siteConfig } from "@/content/site";
 
 export function BusinessUnitsSection() {
   const consulting = businessUnits.find((unit) => unit.name === "CMA Consulting");
@@ -25,7 +25,13 @@ export function BusinessUnitsSection() {
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#007A7A] dark:text-[#5EEAD4]">
                 Capa estratégica
               </p>
-              <BrandLogo variant="consulting" context="auto" />
+              <a
+                href={siteConfig.consultingUrl}
+                aria-label="Ir al sitio de CMA Consulting"
+                className="inline-flex"
+              >
+                <BrandLogo variant="consulting" context="auto" />
+              </a>
               <h3 className="mt-7 text-2xl font-black text-[#0D1B3D] dark:text-[#F8FAFC]">
                 Gestión, procesos y diagnóstico.
               </h3>
@@ -59,7 +65,15 @@ export function BusinessUnitsSection() {
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#7FF0E6] dark:text-[#5EEAD4]">
                 Capa tecnológica
               </p>
-              <BrandLogo variant="source" context="dark" />
+              <a
+                href={siteConfig.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visitar el sitio de cma_source"
+                className="inline-flex"
+              >
+                <BrandLogo variant="source" context="dark" />
+              </a>
               <h3 className="mt-7 text-2xl font-black">
                 Software, datos y automatización.
               </h3>
