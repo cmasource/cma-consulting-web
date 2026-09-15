@@ -19,6 +19,8 @@ const publicEnv = (
 export const siteConfig = {
   name: "CMA Consulting",
   sourceName: "cma_source",
+  consultingUrl: "https://cmaconsulting.com.ar",
+  sourceUrl: "https://cma-source.vercel.app",
   tagline: "Consultoría financiero-operativa y tecnológica para pymes.",
   headline: "Ordená números, procesos y decisiones.",
   subtitle:
