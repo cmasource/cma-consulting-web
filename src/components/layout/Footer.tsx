@@ -11,7 +11,13 @@ export function Footer() {
 
       <div className="container-shell relative grid gap-10 py-14 md:grid-cols-[1.2fr_0.85fr_0.85fr_0.75fr]">
         <div>
-          <BrandLogo variant="consulting" context="dark" />
+          <a
+            href={siteConfig.consultingUrl}
+            aria-label="Ir al sitio de CMA Consulting"
+            className="inline-flex"
+          >
+            <BrandLogo variant="consulting" context="dark" />
+          </a>
           <p className="mt-6 max-w-sm text-sm leading-7 text-white/82">
             Consultoría empresarial, procesos y tecnología aplicada para pasar
             del diagnóstico a la implementación real.
@@ -88,11 +94,19 @@ export function Footer() {
           <span>© {year} CMA Consulting. Todos los derechos reservados.</span>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <span>Página desarrollada por</span>
-            <BrandLogo
-              variant="source"
-              context="dark"
-              className="[&>span]:h-7 sm:[&>span]:h-8"
-            />
+            <a
+              href={siteConfig.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visitar el sitio de cma_source"
+              className="inline-flex"
+            >
+              <BrandLogo
+                variant="source"
+                context="dark"
+                className="[&>span]:h-7 sm:[&>span]:h-8"
+              />
+            </a>
           </div>
         </div>
       </div>
